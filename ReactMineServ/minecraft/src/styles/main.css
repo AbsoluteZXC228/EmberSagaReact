@@ -3262,3 +3262,75 @@ body {
   box-shadow: none !important;
   backdrop-filter: none !important;
 }
+/* History war background */
+.history-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #121726;
+  background-image: var(--history-bg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.history-section::before,
+.history-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.history-section::before {
+  background:
+    linear-gradient(180deg, rgba(10, 12, 20, 0.52) 0%, rgba(9, 12, 20, 0.6) 48%, rgba(8, 10, 18, 0.82) 100%),
+    radial-gradient(circle at 50% 50%, rgba(173, 188, 255, 0.12), transparent 28%);
+}
+
+.history-section::after {
+  background: linear-gradient(90deg, rgba(8, 10, 18, 0.8) 0%, rgba(10, 13, 22, 0.52) 34%, rgba(10, 13, 22, 0.24) 58%, rgba(8, 10, 18, 0.54) 100%);
+}
+
+.history-screen {
+  position: relative;
+  z-index: 1;
+}
+
+.history-heading {
+  max-width: 720px;
+}
+
+.history-section .eyebrow {
+  color: #d9deff;
+}
+
+.history-section .section-heading h2,
+.history-section .history-card h3 {
+  color: #f3f5ff;
+}
+
+.history-section .rules-note,
+.history-section .history-list li {
+  color: #c7cee6;
+}
+
+.history-card {
+  border: 1px solid rgba(145, 155, 196, 0.12);
+  background:
+    linear-gradient(180deg, rgba(15, 19, 31, 0.76), rgba(10, 13, 22, 0.86)),
+    linear-gradient(90deg, rgba(93, 105, 152, 0.05), transparent 54%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 34px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(5px);
+}
+
+.history-card::before {
+  background: linear-gradient(180deg, #95a3ff, #65c9a2);
+}
+
+.history-period {
+  color: #dfe7ff;
+  background: rgba(149, 163, 255, 0.12);
+  border-color: rgba(149, 163, 255, 0.28);
+}

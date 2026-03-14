@@ -1,4 +1,6 @@
-﻿const historyEvents = [
+import warHorizon from '../Logo/about/voina-horizon.png'
+
+const historyEvents = [
   {
     title: 'Инцидент с 1.5 млн кнопок',
     period: 'Критическая техническая проблема',
@@ -21,26 +23,32 @@
 
 export default function History() {
   return (
-    <section id="history" className="section section-alt history-section">
+    <section
+      id="history"
+      className="section section-alt history-section"
+      style={{ '--history-bg': `url(${warHorizon})` }}
+    >
       <div className="container">
-        <div className="section-heading">
-          <p className="eyebrow">Летопись проекта</p>
-          <h2>История сервера</h2>
-          <p className="rules-note">Ключевые события, которые повлияли на развитие мира Ember Saga.</p>
-        </div>
+        <div className="section-screen history-screen">
+          <div className="section-heading history-heading">
+            <p className="eyebrow">Летопись проекта</p>
+            <h2>История сервера</h2>
+            <p className="rules-note">Ключевые события, которые повлияли на развитие мира Ember Saga.</p>
+          </div>
 
-        <div className="history-grid">
-          {historyEvents.map((event) => (
-            <article key={event.title} className="panel history-card">
-              <span className="history-period">{event.period}</span>
-              <h3>{event.title}</h3>
-              <ul className="history-list">
-                {event.details.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
+          <div className="history-grid">
+            {historyEvents.map((event) => (
+              <article key={event.title} className="panel history-card">
+                <span className="history-period">{event.period}</span>
+                <h3>{event.title}</h3>
+                <ul className="history-list">
+                  {event.details.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
