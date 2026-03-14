@@ -1,4 +1,6 @@
-﻿const sections = [
+import rulesBackground from '../Logo/about/pravila.png'
+
+const sections = [
   {
     title: 'Объявление войны',
     items: [
@@ -60,7 +62,7 @@ const quickForbidden = [
 
 export default function Rules() {
   return (
-    <section id="rules" className="section">
+    <section id="rules" className="section rules-section" style={{ '--rules-bg': `url(${rulesBackground})` }}>
       <div className="container">
         <div className="section-heading">
           <p className="eyebrow">Серверный устав</p>
