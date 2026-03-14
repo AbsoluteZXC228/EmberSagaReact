@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import serverLogo from '../Logo/logo.jpg'
 
 const navItems = [
@@ -14,11 +14,26 @@ export default function Header({ onJoinClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const closeMenu = () => setIsMenuOpen(false)
+  const handleAnchorClick = (href) => (event) => {
+    closeMenu()
+
+    const target = document.querySelector(href)
+    if (!target) {
+      return
+    }
+
+    event.preventDefault()
+    const header = document.querySelector('.site-header')
+    const headerOffset = header ? header.offsetHeight : 0
+    const top = Math.max(target.offsetTop - headerOffset, 0)
+
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
 
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <a href="#top" className="brand" onClick={closeMenu}>
+        <a href="#top" className="brand" onClick={handleAnchorClick('#top')}>
           <img src={serverLogo} alt="Логотип сервера Ember Saga" className="brand-logo" />
           <span className="brand-ember">EMBER</span> <span className="brand-saga">SAGA</span>
         </a>
@@ -36,7 +51,7 @@ export default function Header({ onJoinClick }) {
 
         <nav className={`header-nav ${isMenuOpen ? 'header-nav-open' : ''}`}>
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="nav-link" onClick={closeMenu}>
+            <a key={item.href} href={item.href} className="nav-link" onClick={handleAnchorClick(item.href)}>
               {item.label}
             </a>
           ))}

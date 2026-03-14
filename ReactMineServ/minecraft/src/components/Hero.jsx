@@ -1,4 +1,4 @@
-﻿const shootingStars = [
+const shootingStars = [
   {
     id: 'one',
     style: {
@@ -38,6 +38,20 @@
 ]
 
 export default function Hero({ onJoinClick }) {
+  const handleAnchorClick = (href) => (event) => {
+    const target = document.querySelector(href)
+    if (!target) {
+      return
+    }
+
+    event.preventDefault()
+    const header = document.querySelector('.site-header')
+    const headerOffset = header ? header.offsetHeight : 0
+    const top = Math.max(target.offsetTop - headerOffset, 0)
+
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+
   return (
     <section id="top" className="hero hero-landing hero-cycle">
       <div className="hero-scene" aria-hidden="true">
@@ -74,7 +88,7 @@ export default function Hero({ onJoinClick }) {
           <button type="button" className="btn hero-btn-primary" onClick={onJoinClick}>
             Подать заявку
           </button>
-          <a href="#map" className="btn hero-btn-secondary">
+          <a href="#map" className="btn hero-btn-secondary" onClick={handleAnchorClick('#map')}>
             Смотреть карту
           </a>
         </div>
@@ -85,7 +99,7 @@ export default function Hero({ onJoinClick }) {
           <span>Честный старт</span>
         </div>
 
-        <a href="#about" className="hero-scroll-indicator" aria-label="Прокрутить вниз">
+        <a href="#about" className="hero-scroll-indicator" aria-label="Прокрутить вниз" onClick={handleAnchorClick('#about')}>
           ↓
         </a>
       </div>
