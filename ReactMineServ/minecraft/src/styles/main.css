@@ -2786,3 +2786,14 @@ body {
     }
   }
 }
+
+body {
+  scroll-snap-type: none;
+}
+
+.hero,
+.section,
+.site-footer {
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+}
