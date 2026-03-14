@@ -3334,3 +3334,66 @@ body {
   background: rgba(149, 163, 255, 0.12);
   border-color: rgba(149, 163, 255, 0.28);
 }
+/* Ultra compact rules section */
+#rules .section-heading {
+  max-width: 620px;
+  gap: 10px;
+}
+
+#rules .section-heading h2 {
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  margin: 0;
+}
+
+#rules .rules-note {
+  font-size: 0.95rem;
+  line-height: 1.38;
+}
+
+#rules .rules-full-btn {
+  margin-top: 6px;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+#rules .rules-grid {
+  gap: 10px;
+}
+
+#rules .rule-panel {
+  padding: 12px 12px 10px;
+  border-radius: 16px;
+}
+
+#rules .rule-panel h3,
+#rules .quick-card h3 {
+  font-size: 0.95rem;
+}
+
+#rules .rule-panel ul,
+#rules .quick-card ul {
+  margin: 8px 0 0;
+  padding-left: 14px;
+}
+
+#rules .rule-panel li,
+#rules .quick-card li {
+  margin-bottom: 5px;
+  line-height: 1.32;
+  font-size: 0.87rem;
+}
+
+#rules .rules-quick-grid {
+  gap: 10px;
+}
+
+#rules .quick-card {
+  padding: 12px 12px 10px;
+  border-radius: 16px;
+}
+
+@media (min-width: 981px) {
+  #rules .rules-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
