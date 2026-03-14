@@ -1,3 +1,5 @@
+import mapBackdrop from '../Logo/about/Karta.png'
+
 const mapHighlights = [
   'Города и столицы',
   'Маршруты и границы',
@@ -6,7 +8,7 @@ const mapHighlights = [
 
 export default function ServerMap() {
   return (
-    <section id="map" className="section section-alt map-section">
+    <section id="map" className="section section-alt map-section" style={{ '--map-bg': `url(${mapBackdrop})` }}>
       <div className="container">
         <div className="section-screen map-screen">
           <div className="map-intro-shell">

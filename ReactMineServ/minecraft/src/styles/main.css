@@ -3698,3 +3698,33 @@ body {
     padding-top: 0;
   }
 }
+/* Map image background */
+.map-section {
+  background:
+    linear-gradient(180deg, rgba(10, 12, 20, 0.7) 0%, rgba(9, 12, 20, 0.8) 100%),
+    var(--map-bg) center center / cover no-repeat !important;
+}
+
+.map-section::before,
+.map-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.map-section::before {
+  background:
+    linear-gradient(180deg, rgba(8, 10, 18, 0.36) 0%, rgba(8, 10, 18, 0.12) 35%, rgba(8, 10, 18, 0.56) 100%),
+    radial-gradient(circle at 18% 18%, rgba(104, 86, 181, 0.14), transparent 30%),
+    radial-gradient(circle at 82% 20%, rgba(59, 170, 132, 0.1), transparent 26%);
+}
+
+.map-section::after {
+  background: linear-gradient(90deg, rgba(8, 10, 18, 0.76) 0%, rgba(9, 12, 20, 0.4) 34%, rgba(10, 13, 22, 0.18) 60%, rgba(8, 10, 18, 0.5) 100%);
+}
+
+.map-section > .container {
+  position: relative;
+  z-index: 1;
+}
