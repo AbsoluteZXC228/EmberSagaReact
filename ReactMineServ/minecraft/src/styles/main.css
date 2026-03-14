@@ -3728,3 +3728,69 @@ body {
   position: relative;
   z-index: 1;
 }
+/* Gallery image background */
+.gallery-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(9, 12, 20, 0.6) 0%, rgba(8, 10, 18, 0.8) 100%),
+    var(--gallery-bg) center center / cover no-repeat;
+}
+
+.gallery-section::before,
+.gallery-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gallery-section::before {
+  background:
+    radial-gradient(circle at 20% 22%, rgba(111, 93, 186, 0.14), transparent 32%),
+    radial-gradient(circle at 84% 18%, rgba(58, 168, 131, 0.1), transparent 26%),
+    linear-gradient(180deg, rgba(8, 10, 18, 0.22) 0%, rgba(8, 10, 18, 0.06) 34%, rgba(8, 10, 18, 0.54) 100%);
+}
+
+.gallery-section::after {
+  background: linear-gradient(90deg, rgba(8, 10, 18, 0.74) 0%, rgba(9, 12, 20, 0.34) 36%, rgba(10, 13, 22, 0.18) 60%, rgba(8, 10, 18, 0.48) 100%);
+}
+
+.gallery-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-heading {
+  max-width: 700px;
+}
+
+.gallery-section .eyebrow {
+  color: #dbe0ff;
+}
+
+.gallery-section .section-heading h2,
+.gallery-section .gallery-card h3 {
+  color: #f4f6ff;
+}
+
+.gallery-section .gallery-card p,
+.gallery-section .gallery-open-hint {
+  color: #c9d0e7;
+}
+
+.gallery-section .gallery-card {
+  border-color: rgba(142, 154, 198, 0.14);
+  background:
+    linear-gradient(180deg, rgba(16, 20, 32, 0.76), rgba(10, 13, 22, 0.88)),
+    linear-gradient(90deg, rgba(98, 109, 156, 0.05), transparent 54%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 36px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(5px);
+}
+
+.gallery-section .gallery-preview,
+.gallery-section .gallery-preview-img {
+  border-color: rgba(255, 255, 255, 0.1);
+}
