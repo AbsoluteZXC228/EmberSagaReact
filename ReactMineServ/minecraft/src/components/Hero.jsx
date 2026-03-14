@@ -6,8 +6,8 @@ const shootingStars = [
     style: {
       '--star-top': '18%',
       '--star-left': '58%',
-      '--star-delay': '1.1s',
-      '--star-duration': '3.8s',
+      '--star-delay': '0.9s',
+      '--star-duration': '3.5s',
     },
   },
   {
@@ -15,8 +15,8 @@ const shootingStars = [
     style: {
       '--star-top': '33%',
       '--star-left': '26%',
-      '--star-delay': '4.5s',
-      '--star-duration': '3.4s',
+      '--star-delay': '3.2s',
+      '--star-duration': '3.2s',
     },
   },
   {
@@ -24,8 +24,8 @@ const shootingStars = [
     style: {
       '--star-top': '12%',
       '--star-left': '74%',
-      '--star-delay': '8.2s',
-      '--star-duration': '3.2s',
+      '--star-delay': '5.6s',
+      '--star-duration': '3.1s',
     },
   },
   {
@@ -33,8 +33,17 @@ const shootingStars = [
     style: {
       '--star-top': '44%',
       '--star-left': '42%',
-      '--star-delay': '12.6s',
-      '--star-duration': '3.9s',
+      '--star-delay': '7.8s',
+      '--star-duration': '3.6s',
+    },
+  },
+  {
+    id: 'five',
+    style: {
+      '--star-top': '24%',
+      '--star-left': '64%',
+      '--star-delay': '10.4s',
+      '--star-duration': '3.3s',
     },
   },
 ]

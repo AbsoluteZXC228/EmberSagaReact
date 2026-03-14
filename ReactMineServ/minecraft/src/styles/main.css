@@ -3920,3 +3920,48 @@ body {
   grid-template-columns: minmax(0, 42rem);
   justify-content: start;
 }
+/* Softer, more frequent hero meteors */
+.hero-cycle .hero-starfall {
+  filter: drop-shadow(0 0 7px rgba(226, 236, 255, 0.72));
+}
+
+@keyframes heroNightObjectsCycle {
+  0%, 24% { opacity: 0.92; }
+  32% { opacity: 0.24; }
+  40%, 68% { opacity: 0; }
+  80% { opacity: 0.24; }
+  88%, 100% { opacity: 0.9; }
+}
+
+@keyframes heroStarTail {
+  0%, 16%, 100% { width: 0; }
+  32% { width: 88px; }
+  54% { width: 56px; }
+}
+
+@keyframes heroStarShine {
+  0%, 18%, 100% { width: 0; }
+  40% { width: 22px; }
+}
+
+@keyframes heroStarShoot {
+  0%, 16% { transform: translateX(0); opacity: 0; }
+  24% { opacity: 0.95; }
+  62% { transform: translateX(228px); opacity: 0.95; }
+  78%, 100% { transform: translateX(252px); opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  @keyframes heroStarTail {
+    0%, 16%, 100% { width: 0; }
+    32% { width: 62px; }
+    54% { width: 40px; }
+  }
+
+  @keyframes heroStarShoot {
+    0%, 16% { transform: translateX(0); opacity: 0; }
+    24% { opacity: 0.95; }
+    62% { transform: translateX(164px); opacity: 0.95; }
+    78%, 100% { transform: translateX(182px); opacity: 0; }
+  }
+}
