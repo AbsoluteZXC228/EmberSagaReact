@@ -1,3 +1,5 @@
+import { scrollToSelector } from '../utils/scroll'
+
 const shootingStars = [
   {
     id: 'one',
@@ -39,13 +41,8 @@ const shootingStars = [
 
 export default function Hero({ onJoinClick }) {
   const handleAnchorClick = (href) => (event) => {
-    const target = document.querySelector(href)
-    if (!target) {
-      return
-    }
-
     event.preventDefault()
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSelector(href)
   }
 
   return (

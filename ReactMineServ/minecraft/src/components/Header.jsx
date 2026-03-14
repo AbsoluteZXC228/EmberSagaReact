@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import serverLogo from '../Logo/logo.jpg'
+import { scrollToSelector } from '../utils/scroll'
 
 const navItems = [
   { href: '#about', label: 'О сервере' },
@@ -16,14 +17,8 @@ export default function Header({ onJoinClick }) {
   const closeMenu = () => setIsMenuOpen(false)
   const handleAnchorClick = (href) => (event) => {
     closeMenu()
-
-    const target = document.querySelector(href)
-    if (!target) {
-      return
-    }
-
     event.preventDefault()
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    scrollToSelector(href)
   }
 
   return (
