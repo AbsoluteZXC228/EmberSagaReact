@@ -3892,3 +3892,31 @@ body {
 .site-footer {
   margin-top: 0 !important;
 }
+.footer-grid--minimal {
+  grid-template-columns: 1.5fr auto;
+}
+
+.footer-links-column {
+  justify-self: end;
+}
+
+.footer-links-column ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .footer-grid--minimal {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links-column {
+    justify-self: start;
+  }
+}
+.footer-grid--single {
+  grid-template-columns: minmax(0, 42rem);
+  justify-content: start;
+}
