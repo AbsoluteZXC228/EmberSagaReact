@@ -1,16 +1,18 @@
-﻿export default function Footer() {
+const focusItems = ['Политический мир', 'Whitelist-доступ', 'Живая история игроков']
+
+export default function Footer() {
   return (
     <footer id="contact" className="site-footer">
       <div className="container footer-grid">
-        <div>
+        <div className="footer-column footer-brand-column">
           <h3><span className="brand-ember">EMBER</span> <span className="brand-saga">SAGA</span></h3>
           <p>
-            Проект для тех, кто любит долгую игру, политику и атмосферу.
-            Подключайся к сообществу и подавай заявку в вайтлист.
+            Сервер для тех, кто любит долгую игру, государства, конфликты и атмосферный мир,
+            в котором история создаётся самими игроками.
           </p>
         </div>
 
-        <div>
+        <div className="footer-column">
           <h4>Контакты</h4>
           <ul>
             <li>
@@ -21,12 +23,12 @@
           </ul>
         </div>
 
-        <div id="join">
-          <h4>Как начать</h4>
+        <div className="footer-column">
+          <h4>Фокус</h4>
           <ul>
-            <li>Играть можно и с лицензии, и с пиратских лаунчеров.</li>
-            <li>Регистрация проходит через бота, который указан в Telegram.</li>
-            <li>После одобрения заявки ты получишь доступ и сможешь сразу зайти на сервер.</li>
+            {focusItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </div>
       </div>
