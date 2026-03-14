@@ -41,12 +41,12 @@ export default function Home() {
               Можно зайти и с пиратских лаунчеров.
             </p>
             <p>
-              Главное условие: оставь заявку в нашем Telegram-канале (там находится бот), после одобрения получишь доступ на сервер.
+              Регистрация проходит через бота, который указан в Telegram. После одобрения заявки ты получишь доступ на сервер.
             </p>
 
             <div className="join-modal-actions">
               <a href="https://t.me/DebustSoSo" target="_blank" rel="noreferrer" className="btn">
-                Перейти в Telegram-канал
+                Открыть Telegram
               </a>
               <button type="button" className="btn btn-ghost" onClick={closeJoinModal}>
                 Понятно
