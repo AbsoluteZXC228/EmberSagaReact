@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import About from '../components/About'
@@ -8,13 +8,8 @@ import ServerMap from '../components/ServerMap'
 import Gallery from '../components/Gallery'
 import Footer from '../components/Footer'
 
-const SNAP_IDS = ['top', 'about', 'history', 'rules', 'map', 'gallery', 'contact']
-const HEADER_OFFSET = 86
-const SNAP_LOCK_MS = 760
-
 export default function Home() {
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false)
-  const snapLockRef = useRef(false)
 
   const openJoinModal = () => setIsJoinModalOpen(true)
   const closeJoinModal = () => setIsJoinModalOpen(false)
@@ -24,36 +19,31 @@ export default function Home() {
       return undefined
     }
 
-    const isDesktop = window.matchMedia('(min-width: 901px)').matches
+    const sectionSelectors = ['#top', '#about', '#history', '#rules', '#map', '#gallery', '#contact']
+    const desktopBreakpoint = 980
+    const wheelThreshold = 45
+    const scrollLockMs = 850
 
-    if (!isDesktop) {
-      return undefined
+    let wheelDelta = 0
+    let isLocked = false
+    let lockTimer = null
+
+    const getHeaderOffset = () => {
+      const header = document.querySelector('.site-header')
+      return header ? header.offsetHeight : 0
     }
 
-    const sections = SNAP_IDS
-      .map((id) => document.getElementById(id))
-      .filter(Boolean)
+    const getSections = () =>
+      sectionSelectors
+        .map((selector) => document.querySelector(selector))
+        .filter(Boolean)
 
-    if (sections.length === 0) {
-      return undefined
-    }
-
-    const releaseLock = () => {
-      window.setTimeout(() => {
-        snapLockRef.current = false
-      }, SNAP_LOCK_MS)
-    }
-
-    const getClosestSectionIndex = () => {
-      const currentY = window.scrollY + HEADER_OFFSET + 16
+    const getCurrentSectionIndex = (sections, headerOffset) => {
+      const targetY = window.scrollY + headerOffset + 24
       let closestIndex = 0
-      let closestDistance = Number.POSITIVE_INFINITY
 
       sections.forEach((section, index) => {
-        const distance = Math.abs(section.offsetTop - currentY)
-
-        if (distance < closestDistance) {
-          closestDistance = distance
+        if (section.offsetTop <= targetY) {
           closestIndex = index
         }
       })
@@ -61,32 +51,57 @@ export default function Home() {
       return closestIndex
     }
 
+    const scrollToSection = (section) => {
+      const top = Math.max(section.offsetTop - getHeaderOffset(), 0)
+      window.scrollTo({ top, behavior: 'smooth' })
+    }
+
+    const lockScroll = () => {
+      isLocked = true
+      window.clearTimeout(lockTimer)
+      lockTimer = window.setTimeout(() => {
+        isLocked = false
+      }, scrollLockMs)
+    }
+
     const handleWheel = (event) => {
-      if (snapLockRef.current || Math.abs(event.deltaY) < 24) {
+      if (window.innerWidth <= desktopBreakpoint) return
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+      if (isLocked) {
+        event.preventDefault()
         return
       }
 
-      const currentIndex = getClosestSectionIndex()
-      const direction = event.deltaY > 0 ? 1 : -1
-      const nextIndex = Math.max(0, Math.min(sections.length - 1, currentIndex + direction))
-      const nextSection = sections[nextIndex]
+      wheelDelta += event.deltaY
 
-      if (!nextSection || nextIndex === currentIndex) {
+      if (Math.abs(wheelDelta) < wheelThreshold) return
+
+      const sections = getSections()
+      if (!sections.length) {
+        wheelDelta = 0
         return
       }
+
+      const direction = wheelDelta > 0 ? 1 : -1
+      const currentIndex = getCurrentSectionIndex(sections, getHeaderOffset())
+      const nextIndex = Math.min(Math.max(currentIndex + direction, 0), sections.length - 1)
+
+      wheelDelta = 0
+
+      if (nextIndex === currentIndex) return
 
       event.preventDefault()
-      snapLockRef.current = true
-      window.scrollTo({
-        top: Math.max(0, nextSection.offsetTop - HEADER_OFFSET),
-        behavior: 'smooth',
-      })
-      releaseLock()
+      lockScroll()
+      scrollToSection(sections[nextIndex])
     }
 
     window.addEventListener('wheel', handleWheel, { passive: false })
 
-    return () => window.removeEventListener('wheel', handleWheel)
+    return () => {
+      window.removeEventListener('wheel', handleWheel)
+      window.clearTimeout(lockTimer)
+    }
   }, [isJoinModalOpen])
 
   return (
