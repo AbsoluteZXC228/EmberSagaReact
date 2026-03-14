@@ -1,33 +1,61 @@
-﻿export default function ServerMap() {
+const mapHighlights = [
+  'Города и столицы',
+  'Маршруты и границы',
+  'Игроки онлайн',
+]
+
+export default function ServerMap() {
   return (
-    <section id="map" className="section section-alt">
+    <section id="map" className="section section-alt map-section">
       <div className="container">
-        <div className="section-heading">
-          <p className="eyebrow">Онлайн-навигация</p>
-          <h2>Карта сервера</h2>
-          <p className="rules-note">
-            Живая карта мира: города, маршруты, ключевые территории и активность игроков в реальном времени.
-          </p>
-        </div>
+        <div className="section-screen map-screen">
+          <div className="map-intro-shell">
+            <div className="section-heading map-heading">
+              <p className="eyebrow">Онлайн-навигация</p>
+              <h2>Карта сервера</h2>
+              <p className="rules-note">
+                Живая карта мира: города, маршруты, ключевые территории и активность игроков в реальном времени.
+              </p>
+            </div>
 
-        <div className="map-wrap panel">
-          <iframe
-            src="http://213.171.18.207:32826/#"
-            title="Карта мира сервера"
-            loading="lazy"
-            className="server-map-frame"
-            referrerPolicy="no-referrer"
-          />
-        </div>
+            <div className="map-meta-panel panel">
+              <div className="map-meta-copy">
+                <strong>Что видно на карте</strong>
+                <p>Следи за государствами, дорогами, столицами и передвижением игроков без входа в сам мир.</p>
+              </div>
 
-        <a
-          href="http://213.171.18.207:32826/#"
-          target="_blank"
-          rel="noreferrer"
-          className="btn map-open-btn"
-        >
-          Открыть карту в новой вкладке
-        </a>
+              <div className="map-highlight-row" aria-label="Что можно отслеживать">
+                {mapHighlights.map((item) => (
+                  <span key={item} className="map-highlight-chip">{item}</span>
+                ))}
+              </div>
+
+              <div className="map-actions">
+                <a
+                  href="http://213.171.18.207:32826/#"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn map-open-btn"
+                >
+                  Открыть карту
+                </a>
+                <span className="map-note">Лучше всего работает на десктопе в отдельной вкладке.</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="map-stage panel">
+            <div className="map-frame-shell">
+              <iframe
+                src="http://213.171.18.207:32826/#"
+                title="Карта мира сервера"
+                loading="lazy"
+                className="server-map-frame"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
