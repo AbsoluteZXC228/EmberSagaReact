@@ -2877,3 +2877,259 @@ body {
   margin: 0;
   padding: 16px 0 28px;
 }
+
+/* About image background final */
+.section-about {
+  position: relative;
+  overflow: hidden;
+  background-color: #151a29;
+  background-image: var(--about-bg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-about::before,
+.section-about::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.section-about::before {
+  background:
+    linear-gradient(180deg, rgba(10, 14, 24, 0.18) 0%, rgba(10, 14, 24, 0.38) 46%, rgba(8, 10, 18, 0.72) 100%),
+    radial-gradient(circle at 50% 52%, rgba(180, 196, 255, 0.12), transparent 24%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 68px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.01) 0 2px, transparent 2px 68px);
+}
+
+.section-about::after {
+  background: linear-gradient(90deg, rgba(7, 10, 18, 0.86) 0%, rgba(9, 12, 20, 0.74) 38%, rgba(11, 14, 22, 0.46) 66%, rgba(12, 15, 22, 0.58) 100%);
+}
+
+.about-photo-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(33, 42, 67, 0.14) 0%, rgba(20, 26, 44, 0.08) 36%, rgba(10, 14, 22, 0.14) 100%),
+    radial-gradient(circle at 50% 58%, rgba(204, 214, 255, 0.08), transparent 22%);
+  pointer-events: none;
+}
+
+.about-stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(22px, 3vw, 32px);
+  padding: clamp(28px, 4vw, 40px);
+  border: 3px solid rgba(138, 152, 196, 0.16);
+  background:
+    linear-gradient(180deg, rgba(16, 20, 33, 0.74), rgba(10, 13, 22, 0.82)),
+    linear-gradient(90deg, rgba(12, 16, 27, 0.72), rgba(12, 16, 27, 0.54));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 28px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(4px);
+}
+
+.about-heading {
+  max-width: 760px;
+}
+
+.section-about .eyebrow {
+  color: #d3dbff;
+}
+
+.section-about .section-heading h2,
+.section-about .about-panel h3,
+.section-about .about-metrics-castle strong {
+  color: #f4f6ff;
+}
+
+.section-about .rules-note,
+.section-about .about-panel p,
+.section-about .about-metrics-castle span {
+  color: #c1c9e4;
+}
+
+.section-about .about-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-panel {
+  min-height: 100%;
+  border: 2px solid rgba(138, 152, 196, 0.1);
+  background:
+    linear-gradient(180deg, rgba(20, 24, 38, 0.76), rgba(11, 14, 23, 0.88)),
+    linear-gradient(90deg, rgba(88, 101, 148, 0.06), transparent 48%);
+}
+
+.about-metrics-castle {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-metrics-castle div {
+  border: 2px solid rgba(138, 152, 196, 0.1);
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(20, 24, 38, 0.76), rgba(11, 14, 23, 0.88)),
+    linear-gradient(90deg, rgba(88, 101, 148, 0.05), transparent 48%);
+}
+
+@media (max-width: 920px) {
+  .section-about .about-grid,
+  .about-metrics-castle {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-stage {
+    padding: 22px;
+  }
+
+  .section-about {
+    background-position: center bottom;
+  }
+
+  .section-about::after {
+    background: linear-gradient(180deg, rgba(8, 10, 18, 0.68) 0%, rgba(8, 10, 18, 0.82) 100%);
+  }
+}
+/* About free layout and motion */
+.section-about {
+  background-position: center 54%;
+  animation: aboutBackdropShift 26s ease-in-out infinite alternate;
+}
+
+.section-about::after {
+  background: linear-gradient(90deg, rgba(7, 10, 18, 0.78) 0%, rgba(9, 12, 20, 0.56) 38%, rgba(11, 14, 22, 0.28) 68%, rgba(12, 15, 22, 0.42) 100%);
+}
+
+.about-photo-scrim {
+  animation: aboutMistDrift 18s ease-in-out infinite alternate;
+}
+
+.about-stage {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 0;
+}
+
+.about-heading {
+  max-width: 700px;
+  padding-top: 6px;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  animation: aboutRise 0.9s ease both;
+}
+
+.section-about .about-grid {
+  gap: 20px;
+}
+
+.about-panel,
+.about-metrics-castle div {
+  border-color: rgba(142, 156, 204, 0.08);
+  background:
+    linear-gradient(180deg, rgba(17, 21, 34, 0.54), rgba(10, 13, 22, 0.74)),
+    linear-gradient(90deg, rgba(95, 109, 156, 0.04), transparent 54%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 34px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(5px);
+}
+
+.about-grid .about-panel:nth-child(1) {
+  animation: aboutRise 0.85s ease 0.06s both, aboutCardFloat 8s ease-in-out 1.2s infinite;
+}
+
+.about-grid .about-panel:nth-child(2) {
+  animation: aboutRise 0.85s ease 0.14s both, aboutCardFloat 8s ease-in-out 1.6s infinite;
+}
+
+.about-grid .about-panel:nth-child(3) {
+  animation: aboutRise 0.85s ease 0.22s both, aboutCardFloat 8s ease-in-out 2s infinite;
+}
+
+.about-metrics-castle div:nth-child(1) {
+  animation: aboutRise 0.8s ease 0.3s both;
+}
+
+.about-metrics-castle div:nth-child(2) {
+  animation: aboutRise 0.8s ease 0.38s both;
+}
+
+.about-metrics-castle div:nth-child(3) {
+  animation: aboutRise 0.8s ease 0.46s both;
+}
+
+@keyframes aboutBackdropShift {
+  0% {
+    background-position: center 54%;
+  }
+  100% {
+    background-position: center 50%;
+  }
+}
+
+@keyframes aboutMistDrift {
+  0% {
+    opacity: 0.9;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, -10px, 0) scale(1.03);
+  }
+}
+
+@keyframes aboutRise {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aboutCardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 640px) {
+  .section-about {
+    background-position: center 58%;
+  }
+
+  .section-about::after {
+    background: linear-gradient(180deg, rgba(8, 10, 18, 0.56) 0%, rgba(8, 10, 18, 0.82) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-about,
+  .about-photo-scrim,
+  .about-heading,
+  .about-panel,
+  .about-metrics-castle div {
+    animation: none !important;
+  }
+}

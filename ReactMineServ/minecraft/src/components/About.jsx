@@ -1,8 +1,12 @@
-﻿export default function About() {
+import castleHorizon from '../Logo/about/castle-horizon.png'
+
+export default function About() {
   return (
-    <section id="about" className="section">
-      <div className="container">
-        <div className="section-heading">
+    <section id="about" className="section section-about" style={{ '--about-bg': `url(${castleHorizon})` }}>
+      <div className="about-photo-scrim" aria-hidden="true"></div>
+
+      <div className="container about-stage">
+        <div className="section-heading about-heading">
           <p className="eyebrow">О проекте</p>
           <h2>Почему выбирают Ember Saga</h2>
           <p className="rules-note">
@@ -12,7 +16,7 @@
         </div>
 
         <div className="about-grid">
-          <article className="panel">
+          <article className="panel about-panel">
             <h3>Честный старт</h3>
             <p>
               Нет pay-to-win и скрытых бустов. У всех игроков одинаковые условия на старте,
@@ -20,15 +24,15 @@
             </p>
           </article>
 
-          <article className="panel">
+          <article className="panel about-panel">
             <h3>Живой мир</h3>
             <p>
-              Политика, союзы, конфликты и дипломатия — не декорация, а реальная часть геймплея.
+              Политика, союзы, конфликты и дипломатия не декорация, а реальная часть геймплея.
               Каждое действие влияет на баланс сил сервера.
             </p>
           </article>
 
-          <article className="panel">
+          <article className="panel about-panel">
             <h3>Безопасное комьюнити</h3>
             <p>
               Вайтлист и модерация поддерживают здоровую атмосферу.
@@ -37,7 +41,7 @@
           </article>
         </div>
 
-        <div className="about-metrics">
+        <div className="about-metrics about-metrics-castle">
           <div><strong>100%</strong><span>роль и лор внутри игры</span></div>
           <div><strong>0%</strong><span>pay-to-win механик</span></div>
           <div><strong>24/7</strong><span>доступ к серверу</span></div>
@@ -46,4 +50,3 @@
     </section>
   )
 }
-
