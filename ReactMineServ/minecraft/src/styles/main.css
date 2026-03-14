@@ -3254,3 +3254,11 @@ body {
   scroll-snap-stop: normal !important;
   scroll-margin-top: var(--header-height);
 }
+/* Hero shell cleanup */
+.hero-cycle .hero-content-shell {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
