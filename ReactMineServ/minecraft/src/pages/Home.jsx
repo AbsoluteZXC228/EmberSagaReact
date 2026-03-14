@@ -22,7 +22,7 @@ export default function Home() {
     const sectionSelectors = ['#top', '#about', '#history', '#rules', '#map', '#gallery', '#contact']
     const desktopBreakpoint = 980
     const wheelThreshold = 45
-    const scrollLockMs = 850
+    const scrollLockMs = 900
 
     let wheelDelta = 0
     let isLocked = false
@@ -38,12 +38,17 @@ export default function Home() {
         .map((selector) => document.querySelector(selector))
         .filter(Boolean)
 
-    const getCurrentSectionIndex = (sections, headerOffset) => {
-      const targetY = window.scrollY + headerOffset + 24
+    const getCurrentSectionIndex = (sections) => {
+      const headerOffset = getHeaderOffset()
       let closestIndex = 0
+      let closestDistance = Number.POSITIVE_INFINITY
 
       sections.forEach((section, index) => {
-        if (section.offsetTop <= targetY) {
+        const alignedTop = Math.max(section.offsetTop - headerOffset, 0)
+        const distance = Math.abs(alignedTop - window.scrollY)
+
+        if (distance < closestDistance) {
+          closestDistance = distance
           closestIndex = index
         }
       })
@@ -52,8 +57,7 @@ export default function Home() {
     }
 
     const scrollToSection = (section) => {
-      const top = Math.max(section.offsetTop - getHeaderOffset(), 0)
-      window.scrollTo({ top, behavior: 'smooth' })
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
     const lockScroll = () => {
@@ -84,7 +88,7 @@ export default function Home() {
       }
 
       const direction = wheelDelta > 0 ? 1 : -1
-      const currentIndex = getCurrentSectionIndex(sections, getHeaderOffset())
+      const currentIndex = getCurrentSectionIndex(sections)
       const nextIndex = Math.min(Math.max(currentIndex + direction, 0), sections.length - 1)
 
       wheelDelta = 0
@@ -109,7 +113,6 @@ export default function Home() {
       <Header onJoinClick={openJoinModal} />
       <main>
         <Hero onJoinClick={openJoinModal} />
-
         <About />
         <History />
         <Rules />

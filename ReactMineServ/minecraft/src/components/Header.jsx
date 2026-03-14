@@ -23,11 +23,7 @@ export default function Header({ onJoinClick }) {
     }
 
     event.preventDefault()
-    const header = document.querySelector('.site-header')
-    const headerOffset = header ? header.offsetHeight : 0
-    const top = Math.max(target.offsetTop - headerOffset, 0)
-
-    window.scrollTo({ top, behavior: 'smooth' })
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (

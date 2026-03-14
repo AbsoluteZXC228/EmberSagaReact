@@ -3237,3 +3237,20 @@ main::before,
 .hero-static-transition {
   display: none !important;
 }
+/* Scroll alignment fix */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  scroll-snap-type: none !important;
+}
+
+.hero,
+.section,
+.site-footer {
+  scroll-snap-align: none !important;
+  scroll-snap-stop: normal !important;
+  scroll-margin-top: var(--header-height);
+}
