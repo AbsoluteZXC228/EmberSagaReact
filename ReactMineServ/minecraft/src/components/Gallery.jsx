@@ -103,7 +103,17 @@ export default function Gallery() {
           </button>
 
           <div className="lightbox-content">
-            <h3>{activeItem.title}</h3>
+            <div className="lightbox-header">
+              <h3>{activeItem.title}</h3>
+              <button
+                type="button"
+                className="lightbox-inline-close"
+                onClick={() => setActiveIndex(-1)}
+                aria-label="Закрыть"
+              >
+                ×
+              </button>
+            </div>
             <p>{activeItem.text}</p>
 
             {activeImages.length > 0 ? (

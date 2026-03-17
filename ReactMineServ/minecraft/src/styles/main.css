@@ -566,6 +566,26 @@ a {
   font-size: clamp(1.3rem, 3vw, 1.9rem);
 }
 
+.lightbox-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lightbox-inline-close {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(14, 18, 27, 0.88);
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 .lightbox-content p {
   margin: 10px 0 0;
   color: var(--text-muted);
