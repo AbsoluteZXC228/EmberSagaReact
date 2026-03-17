@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const SERVER_ADDRESS = 'debustember.gomc.me'
 const STATUS_URL = `https://api.mcstatus.io/v2/status/java/${SERVER_ADDRESS}`
@@ -52,6 +52,8 @@ export default function ServerStatus() {
     motd: '',
     iconUrl: '',
   })
+  const [copyState, setCopyState] = useState('idle')
+  const copyTimeoutRef = useRef(null)
 
   useEffect(() => {
     let isMounted = true
@@ -105,8 +107,23 @@ export default function ServerStatus() {
     return () => {
       isMounted = false
       window.clearInterval(intervalId)
+      window.clearTimeout(copyTimeoutRef.current)
     }
   }, [])
+
+  const handleCopyIp = async () => {
+    try {
+      await navigator.clipboard.writeText(SERVER_ADDRESS)
+      setCopyState('copied')
+    } catch {
+      setCopyState('error')
+    }
+
+    window.clearTimeout(copyTimeoutRef.current)
+    copyTimeoutRef.current = window.setTimeout(() => {
+      setCopyState('idle')
+    }, 1800)
+  }
 
   return (
     <section className="server-status-card" aria-label="Статус сервера">
@@ -129,7 +146,13 @@ export default function ServerStatus() {
           </div>
           <div className="server-status-row">
             <span className="server-status-label">IP</span>
-            <strong>{SERVER_ADDRESS}</strong>
+            <div className="server-status-ip-wrap">
+              <strong>{SERVER_ADDRESS}</strong>
+              <button type="button" className="server-status-copy" onClick={handleCopyIp} aria-label="Скопировать IP">
+                <span className="server-status-copy-icon" aria-hidden="true"></span>
+              </button>
+              {copyState === 'copied' ? <span className="server-status-copy-feedback">IP скопирован</span> : null}
+            </div>
           </div>
         </div>
 
