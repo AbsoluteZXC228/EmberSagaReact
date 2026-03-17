@@ -109,22 +109,22 @@ export default function ServerStatus() {
   }, [])
 
   return (
-    <section className="server-status-card" aria-label="Server status">
+    <section className="server-status-card" aria-label="Статус сервера">
       <div className="server-status-topline">
-        <span className="server-status-kicker">Server status</span>
+        <span className="server-status-kicker">Статус сервера</span>
         <span className={`server-status-pill ${status.online ? 'server-status-pill-online' : 'server-status-pill-offline'}`}>
-          {status.loading ? 'Refreshing...' : status.online ? 'Online' : 'Offline'}
+          {status.loading ? 'Обновление...' : status.online ? 'Онлайн' : 'Оффлайн'}
         </span>
       </div>
 
       <div className="server-status-grid">
         <div className="server-status-main">
           <div className="server-status-row">
-            <span className="server-status-label">Players</span>
+            <span className="server-status-label">Игроки</span>
             <strong>{status.playersOnline}</strong>
           </div>
           <div className="server-status-row">
-            <span className="server-status-label">Version</span>
+            <span className="server-status-label">Версия</span>
             <strong>{status.version}</strong>
           </div>
           <div className="server-status-row">
