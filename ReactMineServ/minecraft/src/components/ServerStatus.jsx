@@ -141,7 +141,7 @@ export default function ServerStatus() {
         </div>
       </div>
 
-      {status.playerNames.length ? (
+      {status.playersOnline > 0 && status.playerNames.length ? (
         <div className="server-status-players" aria-label="Players online">
           {status.playerNames.map((playerName) => (
             <div key={playerName} className="server-status-player">
