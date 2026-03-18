@@ -8,7 +8,7 @@ import Players from '../components/Players'
 import Rules from '../components/Rules'
 import ServerMap from '../components/ServerMap'
 import Gallery from '../components/Gallery'
-import Footer from '../components/Footer'
+import FooterShowcase from '../components/FooterShowcase'
 import { getHeaderOffset, getSectionTargetTop, scrollToSection } from '../utils/scroll'
 
 export default function Home() {
@@ -122,7 +122,7 @@ export default function Home() {
         <Start />
         <Gallery />
       </main>
-      <Footer />
+      <FooterShowcase />
 
       {isJoinModalOpen && (
         <div className="join-modal" role="dialog" aria-modal="true" aria-label="Как начать играть" onClick={closeJoinModal}>
