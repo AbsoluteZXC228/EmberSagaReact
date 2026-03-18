@@ -14,7 +14,7 @@ import { getHeaderOffset, getSectionTargetTop, scrollToSection } from '../utils/
 export default function Home() {
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false)
 
-  const openJoinModal = () => setIsJoinModalOpen(true)
+  const openJoinModal = () => window.open('https://t.me/EmberSaga_bot', '_blank', 'noopener,noreferrer')
   const closeJoinModal = () => setIsJoinModalOpen(false)
 
   useEffect(() => {
