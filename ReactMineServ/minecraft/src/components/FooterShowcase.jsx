@@ -2,10 +2,24 @@ import discordIcon from '../Logo/messanger/icons8-discord-50.png'
 import telegramIcon from '../Logo/messanger/icons8-telegram-50.png'
 import tiktokIcon from '../Logo/messanger/icons8-tik-tok-50.png'
 import serverLogo from '../Logo/logo.jpg'
-import privacyPolicyFile from '../documents/PK.txt'
-import userAgreementFile from '../documents/PS.txt'
+import privacyPolicyText from '../documents/PK.txt?raw'
+import userAgreementText from '../documents/PS.txt?raw'
 
 export default function FooterShowcase() {
+  const openTxtDocument = (filename, text) => (event) => {
+    event.preventDefault()
+
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const openedWindow = window.open(url, '_blank', 'noopener,noreferrer')
+
+    if (openedWindow) {
+      openedWindow.document.title = filename
+    }
+
+    window.setTimeout(() => URL.revokeObjectURL(url), 60_000)
+  }
+
   return (
     <footer id="contact" className="site-footer">
       <div className="container footer-showcase">
@@ -52,7 +66,7 @@ export default function FooterShowcase() {
         <div className="footer-copy-row">
           <p>{'\u00a9 2026 Ember Saga. \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.'}</p>
           <p>
-            <a href={userAgreementFile} target="_blank" rel="noreferrer">
+            <a href="/PS.txt" onClick={openTxtDocument('PS.txt', userAgreementText)}>
               {'\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u0441\u043e\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435'}
             </a>
           </p>
@@ -60,7 +74,7 @@ export default function FooterShowcase() {
         <div className="footer-copy-row">
           <p>{'\u041d\u0435 \u0441\u0432\u044f\u0437\u0430\u043d \u0441 Mojang AB \u0438\u043b\u0438 Microsoft.'}</p>
           <p>
-            <a href={privacyPolicyFile} target="_blank" rel="noreferrer">
+            <a href="/PK.txt" onClick={openTxtDocument('PK.txt', privacyPolicyText)}>
               {'\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u043a\u043e\u043d\u0444\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0438'}
             </a>
           </p>
