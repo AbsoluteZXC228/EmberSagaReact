@@ -4973,6 +4973,13 @@ body {
   color: #fff;
   font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
   box-shadow: 0 16px 34px rgba(139, 92, 246, 0.24);
+  overflow: hidden;
+}
+
+.footer-brand-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .footer-showcase .footer-column h3,
@@ -5050,13 +5057,24 @@ body {
 
 .footer-copy-showcase {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
   align-items: start;
 }
 
 .footer-copy-showcase p {
   color: rgba(232, 237, 247, 0.68);
+  margin: 0;
+}
+
+.footer-copy-showcase a {
+  color: rgba(232, 237, 247, 0.78);
+  text-decoration: none;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-copy-showcase a:hover {
+  color: #f1d0ff;
 }
 
 @media (max-width: 900px) {

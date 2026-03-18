@@ -1,6 +1,9 @@
 import discordIcon from '../Logo/messanger/icons8-discord-50.png'
 import telegramIcon from '../Logo/messanger/icons8-telegram-50.png'
 import tiktokIcon from '../Logo/messanger/icons8-tik-tok-50.png'
+import serverLogo from '../Logo/logo.jpg'
+import privacyPolicyFile from '../documents/PK.txt'
+import userAgreementFile from '../documents/PS.txt'
 
 export default function FooterShowcase() {
   return (
@@ -8,7 +11,9 @@ export default function FooterShowcase() {
       <div className="container footer-showcase">
         <div className="footer-showcase-grid">
           <div className="footer-column footer-brand-column">
-            <div className="footer-brand-badge">ES</div>
+            <div className="footer-brand-badge">
+              <img src={serverLogo} alt="" className="footer-brand-logo" />
+            </div>
             <h3>
               <span className="brand-ember">EMBER</span> <span className="brand-saga">SAGA</span>
             </h3>
@@ -40,6 +45,16 @@ export default function FooterShowcase() {
 
       <div className="container footer-copy footer-copy-showcase">
         <p>{'\u00a9 2026 Ember Saga. \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.'}</p>
+        <p>
+          <a href={userAgreementFile} target="_blank" rel="noreferrer">
+            {'\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u0441\u043e\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435'}
+          </a>
+        </p>
+        <p>
+          <a href={privacyPolicyFile} target="_blank" rel="noreferrer">
+            {'\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u043a\u043e\u043d\u0444\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0438'}
+          </a>
+        </p>
         <p>{'\u041d\u0435 \u0441\u0432\u044f\u0437\u0430\u043d \u0441 Mojang AB \u0438\u043b\u0438 Microsoft.'}</p>
       </div>
     </footer>
