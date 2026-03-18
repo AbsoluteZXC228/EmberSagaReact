@@ -4429,10 +4429,34 @@ body {
   gap: 12px;
 }
 
+.players-stat-card-violet .players-stat-list {
+  max-height: 222px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.players-stat-card-violet .players-stat-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.players-stat-card-violet .players-stat-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.42);
+}
+
 .players-stat-row {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.players-stat-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 2px solid rgba(139, 92, 246, 0.42);
+  image-rendering: pixelated;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
 }
 
 .players-stat-rank {
@@ -4547,31 +4571,31 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  background: rgba(4, 6, 12, 0.82);
-  backdrop-filter: blur(6px);
+  padding: 18px;
+  background: rgba(4, 6, 12, 0.58);
+  backdrop-filter: blur(4px);
 }
 
 .players-modal-card {
   position: relative;
-  width: min(1080px, 100%);
-  max-height: min(90vh, 920px);
+  width: min(460px, 100%);
+  max-height: min(78vh, 720px);
   overflow: auto;
   border: 1px solid rgba(139, 92, 246, 0.34);
-  border-radius: 28px;
-  padding: 28px;
+  border-radius: 24px;
+  padding: 20px 20px 18px;
   background:
     linear-gradient(180deg, rgba(12, 15, 25, 0.98), rgba(9, 11, 18, 0.99));
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.34);
   animation: playersModalEnter 0.22s ease;
 }
 
 .players-modal-close {
   position: absolute;
-  top: 18px;
-  right: 18px;
-  width: 44px;
-  height: 44px;
+  top: 14px;
+  right: 14px;
+  width: 40px;
+  height: 40px;
   border: 1px solid rgba(139, 92, 246, 0.42);
   border-radius: 999px;
   background: transparent;
@@ -4584,14 +4608,15 @@ body {
 .players-modal-header {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 28px;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-right: 44px;
 }
 
 .players-modal-head {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   border: 2px solid rgba(50, 213, 131, 0.56);
   image-rendering: pixelated;
 }
@@ -4600,75 +4625,49 @@ body {
   margin: 0;
   color: #c28cff;
   font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: clamp(1rem, 2vw, 1.35rem);
 }
 
 .players-modal-title p {
-  margin: 8px 0 0;
+  margin: 6px 0 0;
   color: #9ea8c7;
+  font-size: 0.92rem;
 }
 
 .players-modal-layout {
   display: grid;
-  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
-  gap: 28px;
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  align-items: center;
 }
 
 .players-modal-skin-wrap {
   display: grid;
   justify-items: center;
-  gap: 16px;
+  gap: 14px;
 }
 
 .players-modal-skin {
-  width: min(100%, 340px);
+  width: min(100%, 210px);
   image-rendering: pixelated;
-  filter: drop-shadow(0 20px 42px rgba(0, 0, 0, 0.36));
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.34));
 }
 
 .players-modal-status {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: #32d583;
   font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
+  font-size: 0.96rem;
 }
 
 .players-modal-status-dot {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   border-radius: 999px;
   background: #32d583;
   box-shadow: 0 0 16px rgba(50, 213, 131, 0.5);
-}
-
-.players-modal-stats {
-  display: grid;
-  gap: 16px;
-}
-
-.players-modal-stat {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  min-height: 76px;
-  padding: 0.95rem 1.2rem;
-  border: 1px solid rgba(139, 92, 246, 0.34);
-  border-radius: 18px;
-  background: rgba(17, 20, 31, 0.82);
-}
-
-.players-modal-stat span {
-  color: #9ea8c7;
-  font-size: 1rem;
-}
-
-.players-modal-stat strong {
-  color: #32d583;
-  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
-  text-align: right;
 }
 
 @keyframes playersModalEnter {
@@ -4713,11 +4712,12 @@ body {
   }
 
   .players-modal {
-    padding: 14px;
+    padding: 12px;
   }
 
   .players-modal-card {
-    padding: 20px 18px;
+    width: min(400px, 100%);
+    padding: 18px 16px 16px;
   }
 }
 

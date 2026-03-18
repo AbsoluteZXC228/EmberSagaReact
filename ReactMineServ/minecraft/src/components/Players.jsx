@@ -36,33 +36,6 @@ function formatUpdatedAt(date) {
   }).format(date)
 }
 
-function getPlayerDetails(playerName, status) {
-  const playerIndex = status.playerNames.indexOf(playerName)
-
-  return [
-    {
-      label: '\u0421\u0442\u0430\u0442\u0443\u0441',
-      value: status.online ? '\u041e\u043d\u043b\u0430\u0439\u043d' : '\u041d\u0435 \u0432 \u0441\u0435\u0442\u0438',
-    },
-    {
-      label: '\u041c\u0435\u0441\u0442\u043e \u0432 \u0441\u043f\u0438\u0441\u043a\u0435',
-      value: playerIndex >= 0 ? `#${playerIndex + 1}` : '-',
-    },
-    {
-      label: '\u0418\u0433\u0440\u043e\u043a\u043e\u0432 \u0441\u0435\u0439\u0447\u0430\u0441',
-      value: `${status.playersOnline}`,
-    },
-    {
-      label: '\u0421\u043b\u043e\u0442\u043e\u0432 \u0432\u0441\u0435\u0433\u043e',
-      value: `${status.playersMax || 0}`,
-    },
-    {
-      label: '\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u043e',
-      value: formatUpdatedAt(status.updatedAt ?? new Date()),
-    },
-  ]
-}
-
 export default function Players() {
   const [search, setSearch] = useState('')
   const [selectedPlayer, setSelectedPlayer] = useState(null)
@@ -141,7 +114,7 @@ export default function Players() {
   }, [search, status.playerNames])
 
   const stats = useMemo(() => {
-    const onlineNames = status.playerNames.slice(0, 3)
+    const onlineNames = status.playerNames
     const freeSlots = Math.max((status.playersMax || 0) - status.playersOnline, 0)
 
     return [
@@ -151,6 +124,7 @@ export default function Players() {
         rows: onlineNames.length
           ? onlineNames.map((playerName, index) => ({
               rank: index + 1,
+              avatar: `https://mc-heads.net/avatar/${encodeURIComponent(playerName)}/32`,
               name: playerName,
               meta: '\u0410\u043a\u0442\u0438\u0432\u0435\u043d \u043d\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0435',
             }))
@@ -185,14 +159,6 @@ export default function Players() {
       },
     ]
   }, [status])
-
-  const selectedPlayerDetails = useMemo(() => {
-    if (!selectedPlayer) {
-      return []
-    }
-
-    return getPlayerDetails(selectedPlayer, status)
-  }, [selectedPlayer, status])
 
   return (
     <section id="players" className="section players-section">
@@ -237,7 +203,11 @@ export default function Players() {
               <div className="players-stat-list">
                 {card.rows.map((row) => (
                   <div key={`${card.title}-${row.rank}-${row.name}`} className="players-stat-row">
-                    <span className="players-stat-rank">{row.rank}</span>
+                    {row.avatar ? (
+                      <img src={row.avatar} alt={row.name} className="players-stat-avatar" loading="lazy" />
+                    ) : (
+                      <span className="players-stat-rank">{row.rank}</span>
+                    )}
                     <div className="players-stat-meta">
                       <strong>{row.name}</strong>
                       <span>{row.meta}</span>
@@ -309,15 +279,6 @@ export default function Players() {
                     <span className="players-modal-status-dot" aria-hidden="true"></span>
                     <span>{status.online ? '\u041e\u043d\u043b\u0430\u0439\u043d' : '\u041d\u0435 \u0432 \u0441\u0435\u0442\u0438'}</span>
                   </div>
-                </div>
-
-                <div className="players-modal-stats">
-                  {selectedPlayerDetails.map((item) => (
-                    <div key={`${selectedPlayer}-${item.label}`} className="players-modal-stat">
-                      <span>{item.label}</span>
-                      <strong>{item.value}</strong>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
