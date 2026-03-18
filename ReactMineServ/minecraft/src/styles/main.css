@@ -4287,16 +4287,16 @@ body {
 .players-section {
   overflow: hidden;
   background:
-    radial-gradient(circle at 50% 0%, rgba(255, 196, 232, 0.22), transparent 34%),
-    radial-gradient(circle at 14% 24%, rgba(193, 148, 255, 0.12), transparent 28%),
-    radial-gradient(circle at 86% 18%, rgba(255, 190, 150, 0.12), transparent 24%),
-    linear-gradient(180deg, #fff9fd 0%, #fff7fb 40%, #fffaf6 100%);
+    radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.18), transparent 34%),
+    radial-gradient(circle at 14% 24%, rgba(167, 95, 255, 0.16), transparent 28%),
+    radial-gradient(circle at 86% 18%, rgba(50, 213, 131, 0.14), transparent 24%),
+    linear-gradient(180deg, rgba(16, 18, 29, 0.98) 0%, rgba(17, 12, 31, 0.98) 45%, rgba(10, 26, 20, 0.98) 100%);
 }
 
 .players-section .eyebrow,
 .players-section .rules-note,
 .players-section h2 {
-  color: #2f2239;
+  color: #edf1ff;
 }
 
 .players-screen {
@@ -4316,11 +4316,12 @@ body {
   gap: 12px;
   margin: 0 auto;
   padding: 0.95rem 1.5rem;
-  border: 1px solid rgba(212, 147, 255, 0.58);
+  border: 1px solid rgba(139, 92, 246, 0.4);
   border-radius: 999px;
-  background: rgba(255, 237, 248, 0.88);
-  box-shadow: 0 18px 48px rgba(229, 168, 210, 0.18);
-  color: #251b32;
+  background:
+    linear-gradient(135deg, rgba(42, 24, 68, 0.88), rgba(17, 48, 36, 0.72));
+  box-shadow: 0 18px 48px rgba(13, 8, 24, 0.3);
+  color: #f4f6fb;
 }
 
 .players-summary-pill strong {
@@ -4330,7 +4331,7 @@ body {
 }
 
 .players-summary-pill span {
-  color: #7f87a6;
+  color: #bfc8ea;
   font-size: 0.94rem;
 }
 
@@ -4344,17 +4345,17 @@ body {
   width: 100%;
   height: 64px;
   padding: 0 22px 0 56px;
-  border: 1px solid rgba(212, 147, 255, 0.52);
+  border: 1px solid rgba(139, 92, 246, 0.32);
   border-radius: 16px;
-  background: rgba(255, 253, 255, 0.82);
-  color: #2f2239;
+  background: rgba(15, 18, 29, 0.82);
+  color: #f4f6fb;
   font: inherit;
   font-size: 1rem;
-  box-shadow: 0 18px 44px rgba(228, 188, 214, 0.14);
+  box-shadow: 0 18px 44px rgba(7, 10, 18, 0.24);
 }
 
 .players-search input::placeholder {
-  color: #8f94aa;
+  color: #93a0c5;
 }
 
 .players-search input:focus {
@@ -4368,7 +4369,7 @@ body {
   left: 20px;
   width: 18px;
   height: 18px;
-  border: 2px solid #211a28;
+  border: 2px solid #f4f6fb;
   border-radius: 999px;
 }
 
@@ -4379,7 +4380,7 @@ body {
   bottom: -5px;
   width: 9px;
   height: 2px;
-  background: #211a28;
+  background: #f4f6fb;
   transform: rotate(45deg);
   transform-origin: center;
 }
@@ -4393,8 +4394,9 @@ body {
 .players-stat-card {
   padding: 20px 20px 18px;
   border-radius: 18px;
-  background: rgba(255, 251, 255, 0.68);
-  box-shadow: 0 20px 50px rgba(231, 186, 214, 0.12);
+  background:
+    linear-gradient(180deg, rgba(16, 20, 32, 0.78), rgba(10, 13, 22, 0.88));
+  box-shadow: 0 20px 50px rgba(6, 8, 14, 0.24);
   backdrop-filter: blur(10px);
 }
 
@@ -4404,18 +4406,18 @@ body {
 }
 
 .players-stat-card-violet {
-  border: 1px solid rgba(192, 131, 255, 0.44);
-  color: #a05aff;
+  border: 1px solid rgba(139, 92, 246, 0.34);
+  color: #b994ff;
 }
 
 .players-stat-card-pink {
-  border: 1px solid rgba(255, 148, 194, 0.5);
-  color: #ff60a8;
+  border: 1px solid rgba(139, 92, 246, 0.26);
+  color: #ff7bbf;
 }
 
 .players-stat-card-peach {
-  border: 1px solid rgba(255, 186, 150, 0.58);
-  color: #b76a3b;
+  border: 1px solid rgba(50, 213, 131, 0.28);
+  color: #86e7b4;
 }
 
 .players-stat-list {
@@ -4437,8 +4439,8 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.88);
-  color: #2a2130;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f4f6fb;
   font-size: 0.85rem;
   font-weight: 800;
 }
@@ -4449,12 +4451,12 @@ body {
 }
 
 .players-stat-meta strong {
-  color: #22192a;
+  color: #f4f6fb;
   font-size: 1rem;
 }
 
 .players-stat-meta span {
-  color: #8f94aa;
+  color: #9ea8c7;
   font-size: 0.92rem;
 }
 
@@ -4469,16 +4471,17 @@ body {
   justify-items: center;
   gap: 12px;
   padding: 18px 16px 16px;
-  border: 1px solid rgba(213, 154, 255, 0.5);
+  border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: 22px;
-  background: rgba(255, 253, 255, 0.8);
-  box-shadow: 0 18px 48px rgba(230, 184, 216, 0.12);
+  background:
+    linear-gradient(180deg, rgba(16, 20, 32, 0.78), rgba(10, 13, 22, 0.88));
+  box-shadow: 0 18px 48px rgba(7, 10, 18, 0.28);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .players-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 24px 56px rgba(215, 154, 255, 0.2);
+  box-shadow: 0 24px 56px rgba(70, 34, 128, 0.34);
 }
 
 .players-card-avatar-wrap {
@@ -4489,9 +4492,9 @@ body {
   width: 88px;
   height: 88px;
   border-radius: 999px;
-  border: 5px solid #c981ff;
+  border: 5px solid #8b5cf6;
   image-rendering: pixelated;
-  box-shadow: 0 12px 26px rgba(201, 129, 255, 0.24);
+  box-shadow: 0 12px 26px rgba(139, 92, 246, 0.28);
 }
 
 .players-card-online-dot {
@@ -4500,13 +4503,13 @@ body {
   bottom: 4px;
   width: 18px;
   height: 18px;
-  border: 3px solid #4a314d;
+  border: 3px solid #151722;
   border-radius: 999px;
-  background: #43dd7f;
+  background: #32d583;
 }
 
 .players-card-name {
-  color: #17121d;
+  color: #f4f6fb;
   font-size: 1rem;
   text-align: center;
   word-break: break-word;
@@ -4515,7 +4518,7 @@ body {
 .players-card-hearts {
   display: inline-flex;
   gap: 4px;
-  color: #c8c5d2;
+  color: #5f6684;
   font-size: 0.96rem;
 }
 
@@ -4525,10 +4528,10 @@ body {
 
 .players-empty-state {
   padding: 24px;
-  border: 1px dashed rgba(213, 154, 255, 0.6);
+  border: 1px dashed rgba(139, 92, 246, 0.4);
   border-radius: 22px;
-  background: rgba(255, 253, 255, 0.72);
-  color: #6a6277;
+  background: rgba(15, 18, 29, 0.72);
+  color: #bfc8ea;
   text-align: center;
 }
 
