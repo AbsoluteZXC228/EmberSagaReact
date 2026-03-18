@@ -87,7 +87,7 @@ export default function Hero({ onJoinClick }) {
           Мир, где государства строятся игроками, конфликты имеют последствия, а история сервера рождается прямо в игре.
         </p>
 
-        <ServerStatus />
+        <ServerStatus mode="hero" />
 
         <div className="hero-actions hero-actions-centered">
           <button type="button" className="btn hero-btn-primary" onClick={onJoinClick}>

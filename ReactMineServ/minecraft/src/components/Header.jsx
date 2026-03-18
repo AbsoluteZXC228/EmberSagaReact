@@ -11,6 +11,12 @@ const navItems = [
   { href: '#contact', label: 'Контакты' },
 ]
 
+const navItemsWithPlayers = [
+  ...navItems.slice(0, 2),
+  { href: '#players', label: '\u0418\u0433\u0440\u043e\u043a\u0438' },
+  ...navItems.slice(2),
+]
+
 export default function Header({ onJoinClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -41,7 +47,7 @@ export default function Header({ onJoinClick }) {
         </button>
 
         <nav className={`header-nav ${isMenuOpen ? 'header-nav-open' : ''}`}>
-          {navItems.map((item) => (
+          {navItemsWithPlayers.map((item) => (
             <a key={item.href} href={item.href} className="nav-link" onClick={handleAnchorClick(item.href)}>
               {item.label}
             </a>

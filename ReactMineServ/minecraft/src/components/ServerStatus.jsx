@@ -40,7 +40,7 @@ function formatVersion(version) {
   return matchedVersion ? matchedVersion[0] : rawVersion
 }
 
-export default function ServerStatus() {
+export default function ServerStatus({ mode = 'full' }) {
   const [status, setStatus] = useState({
     loading: true,
     error: false,

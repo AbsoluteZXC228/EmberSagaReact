@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import History from '../components/History'
+import Players from '../components/Players'
 import Rules from '../components/Rules'
 import ServerMap from '../components/ServerMap'
 import Gallery from '../components/Gallery'
@@ -20,7 +21,7 @@ export default function Home() {
       return undefined
     }
 
-    const sectionSelectors = ['#top', '#about', '#history', '#rules', '#map', '#gallery', '#contact']
+    const sectionSelectors = ['#top', '#about', '#history', '#players', '#rules', '#map', '#gallery', '#contact']
     const desktopBreakpoint = 980
     const wheelThreshold = 70
     const scrollLockMs = 980
@@ -114,6 +115,7 @@ export default function Home() {
         <Hero onJoinClick={openJoinModal} />
         <About />
         <History />
+        <Players />
         <Rules />
         <ServerMap />
         <Gallery />
