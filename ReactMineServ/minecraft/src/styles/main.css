@@ -4301,6 +4301,7 @@ body {
 
 .players-screen {
   gap: 30px;
+  margin-top: -18px;
 }
 
 .players-heading-centered {
