@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
+import Start from '../components/Start'
 import About from '../components/About'
 import History from '../components/History'
 import Players from '../components/Players'
@@ -21,7 +22,7 @@ export default function Home() {
       return undefined
     }
 
-    const sectionSelectors = ['#top', '#about', '#history', '#players', '#rules', '#map', '#gallery', '#contact']
+    const sectionSelectors = ['#top', '#start', '#about', '#history', '#players', '#rules', '#map', '#gallery', '#contact']
     const desktopBreakpoint = 980
     const wheelThreshold = 70
     const scrollLockMs = 980
@@ -113,6 +114,7 @@ export default function Home() {
       <Header onJoinClick={openJoinModal} />
       <main>
         <Hero onJoinClick={openJoinModal} />
+        <Start />
         <About />
         <History />
         <Players />

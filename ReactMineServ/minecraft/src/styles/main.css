@@ -4727,3 +4727,223 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+.start-section {
+  position: relative;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(139, 92, 246, 0.16), transparent 30%),
+    radial-gradient(circle at 82% 20%, rgba(50, 213, 131, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(12, 15, 25, 0.98), rgba(9, 12, 20, 0.98));
+}
+
+.start-screen {
+  display: grid;
+  gap: 34px;
+}
+
+.start-heading {
+  max-width: 760px;
+}
+
+.start-heading-centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.start-status-shell {
+  display: flex;
+  justify-content: center;
+}
+
+.start-status-card {
+  width: min(1160px, 100%);
+  padding: 28px 32px;
+  border: 1px solid rgba(139, 92, 246, 0.26);
+  border-radius: 32px;
+  background:
+    linear-gradient(180deg, rgba(16, 20, 32, 0.88), rgba(10, 13, 22, 0.94));
+  box-shadow: 0 24px 56px rgba(6, 8, 14, 0.24);
+}
+
+.start-status-kicker {
+  display: block;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #dbe2ff;
+}
+
+.start-status-main {
+  display: grid;
+  gap: 22px;
+  margin-top: 24px;
+}
+
+.start-ip-shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.start-ip-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: min(100%, 320px);
+  min-height: 64px;
+  padding: 0.95rem 1.3rem;
+  border-radius: 18px;
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  background: rgba(139, 92, 246, 0.14);
+  box-shadow: 0 14px 32px rgba(139, 92, 246, 0.16);
+}
+
+.start-ip-box strong {
+  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
+  color: #f4f6fb;
+}
+
+.start-copy-btn {
+  min-height: 64px;
+  padding: 0.95rem 1.4rem;
+  border: 1px solid rgba(139, 92, 246, 0.26);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #8b5cf6, #ff5b1f);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 16px 34px rgba(139, 92, 246, 0.22);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.start-copy-btn:hover,
+.start-copy-btn:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.start-meta-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.start-meta-line span {
+  position: relative;
+  padding-left: 16px;
+  color: #d7def5;
+}
+
+.start-meta-line span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.start-meta-line span:nth-child(1)::before {
+  background: #32d583;
+}
+
+.start-meta-line span:nth-child(2)::before {
+  background: #4d8dff;
+}
+
+.start-meta-line span:nth-child(3)::before {
+  background: #b45cff;
+}
+
+.start-step-card h3 {
+  color: #ffffff;
+}
+
+.start-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.start-step-card {
+  position: relative;
+  padding: 28px 24px 24px;
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(18, 22, 36, 0.78), rgba(11, 14, 24, 0.9));
+  box-shadow: 0 18px 42px rgba(6, 8, 14, 0.18);
+}
+
+.start-step-number {
+  position: absolute;
+  top: -16px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #8b5cf6, #ff4da0);
+  color: #fff;
+  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
+  font-size: 0.9rem;
+  box-shadow: 0 14px 28px rgba(139, 92, 246, 0.28);
+}
+
+.start-step-card h3 {
+  margin: 26px 0 12px;
+  color: #f4f6fb;
+  font-size: 1.08rem;
+}
+
+.start-step-card p {
+  margin: 0;
+  color: #aeb8da;
+  line-height: 1.68;
+}
+
+.start-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.start-cta-btn {
+  min-width: 320px;
+  padding: 0.95rem 1.55rem;
+  font-size: 1rem;
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.18),
+    0 16px 36px rgba(50, 213, 131, 0.22);
+}
+
+@media (max-width: 980px) {
+  .start-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .start-actions .btn {
+    width: 100%;
+  }
+
+  .start-status-card {
+    padding: 22px 18px;
+  }
+
+  .start-copy-btn,
+  .start-ip-box {
+    width: 100%;
+  }
+}
