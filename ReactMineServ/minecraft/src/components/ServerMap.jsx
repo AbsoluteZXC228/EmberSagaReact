@@ -46,17 +46,6 @@ export default function ServerMap() {
             </div>
           </div>
 
-          <div className="map-stage panel">
-            <div className="map-frame-shell">
-              <iframe
-                src="http://213.171.18.207:32826/#"
-                title="Карта мира сервера"
-                loading="lazy"
-                className="server-map-frame"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-          </div>
         </div>
       </div>
     </section>
