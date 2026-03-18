@@ -22,7 +22,7 @@ export default function Home() {
       return undefined
     }
 
-    const sectionSelectors = ['#top', '#start', '#about', '#history', '#players', '#rules', '#map', '#gallery', '#contact']
+    const sectionSelectors = ['#top', '#about', '#history', '#rules', '#map', '#players', '#start', '#gallery', '#contact']
     const desktopBreakpoint = 980
     const wheelThreshold = 70
     const scrollLockMs = 980
@@ -114,12 +114,12 @@ export default function Home() {
       <Header onJoinClick={openJoinModal} />
       <main>
         <Hero onJoinClick={openJoinModal} />
-        <Start />
         <About />
         <History />
-        <Players />
         <Rules />
         <ServerMap />
+        <Players />
+        <Start />
         <Gallery />
       </main>
       <Footer />

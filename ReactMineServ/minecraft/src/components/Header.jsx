@@ -13,8 +13,8 @@ const navItems = [
 
 const navItemsWithPlayers = [
   ...navItems.slice(0, 4),
-  { href: '#start', label: '\u041d\u0430\u0447\u0430\u0442\u044c' },
   { href: '#players', label: '\u0418\u0433\u0440\u043e\u043a\u0438' },
+  { href: '#start', label: '\u041d\u0430\u0447\u0430\u0442\u044c' },
   ...navItems.slice(4),
 ]
 
