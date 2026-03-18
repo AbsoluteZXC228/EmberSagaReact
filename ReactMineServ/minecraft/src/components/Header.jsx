@@ -8,7 +8,6 @@ const navItems = [
   { href: '#rules', label: 'Правила' },
   { href: '#map', label: 'Карта сервера' },
   { href: '#gallery', label: 'Галерея' },
-  { href: '#contact', label: 'Контакты' },
 ]
 
 const navItemsWithPlayers = [
