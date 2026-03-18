@@ -5056,15 +5056,27 @@ body {
 }
 
 .footer-copy-showcase {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 18px;
-  align-items: start;
 }
 
 .footer-copy-showcase p {
   color: rgba(232, 237, 247, 0.68);
   margin: 0;
+}
+
+.footer-copy-meta {
+  display: grid;
+  gap: 10px;
+}
+
+.footer-copy-links {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+  text-align: right;
 }
 
 .footer-copy-showcase a {
@@ -5080,6 +5092,12 @@ body {
 @media (max-width: 900px) {
   .footer-showcase-grid,
   .footer-copy-showcase {
+    display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .footer-copy-links {
+    justify-items: start;
+    text-align: left;
   }
 }

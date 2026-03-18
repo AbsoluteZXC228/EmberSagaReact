@@ -44,18 +44,22 @@ export default function FooterShowcase() {
       </div>
 
       <div className="container footer-copy footer-copy-showcase">
-        <p>{'\u00a9 2026 Ember Saga. \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.'}</p>
-        <p>
-          <a href={userAgreementFile} target="_blank" rel="noreferrer">
-            {'\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u0441\u043e\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435'}
-          </a>
-        </p>
-        <p>
-          <a href={privacyPolicyFile} target="_blank" rel="noreferrer">
-            {'\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u043a\u043e\u043d\u0444\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0438'}
-          </a>
-        </p>
-        <p>{'\u041d\u0435 \u0441\u0432\u044f\u0437\u0430\u043d \u0441 Mojang AB \u0438\u043b\u0438 Microsoft.'}</p>
+        <div className="footer-copy-meta">
+          <p>{'\u00a9 2026 Ember Saga. \u0412\u0441\u0435 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043d\u044b.'}</p>
+          <p>{'\u041d\u0435 \u0441\u0432\u044f\u0437\u0430\u043d \u0441 Mojang AB \u0438\u043b\u0438 Microsoft.'}</p>
+        </div>
+        <div className="footer-copy-links">
+          <p>
+            <a href={userAgreementFile} target="_blank" rel="noreferrer">
+              {'\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0435 \u0441\u043e\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435'}
+            </a>
+          </p>
+          <p>
+            <a href={privacyPolicyFile} target="_blank" rel="noreferrer">
+              {'\u041f\u043e\u043b\u0438\u0442\u0438\u043a\u0430 \u043a\u043e\u043d\u0444\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0438'}
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   )
