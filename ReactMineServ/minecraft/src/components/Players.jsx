@@ -36,13 +36,36 @@ function formatUpdatedAt(date) {
   }).format(date)
 }
 
-function getHearts(playerName) {
-  const value = Array.from(playerName).reduce((sum, char) => sum + char.charCodeAt(0), 0)
-  return (value % 3) + 1
+function getPlayerDetails(playerName, status) {
+  const playerIndex = status.playerNames.indexOf(playerName)
+
+  return [
+    {
+      label: '\u0421\u0442\u0430\u0442\u0443\u0441',
+      value: status.online ? '\u041e\u043d\u043b\u0430\u0439\u043d' : '\u041d\u0435 \u0432 \u0441\u0435\u0442\u0438',
+    },
+    {
+      label: '\u041c\u0435\u0441\u0442\u043e \u0432 \u0441\u043f\u0438\u0441\u043a\u0435',
+      value: playerIndex >= 0 ? `#${playerIndex + 1}` : '-',
+    },
+    {
+      label: '\u0418\u0433\u0440\u043e\u043a\u043e\u0432 \u0441\u0435\u0439\u0447\u0430\u0441',
+      value: `${status.playersOnline}`,
+    },
+    {
+      label: '\u0421\u043b\u043e\u0442\u043e\u0432 \u0432\u0441\u0435\u0433\u043e',
+      value: `${status.playersMax || 0}`,
+    },
+    {
+      label: '\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u043e',
+      value: formatUpdatedAt(status.updatedAt ?? new Date()),
+    },
+  ]
 }
 
 export default function Players() {
   const [search, setSearch] = useState('')
+  const [selectedPlayer, setSelectedPlayer] = useState(null)
   const [status, setStatus] = useState({
     loading: true,
     error: false,
@@ -160,44 +183,28 @@ export default function Players() {
           },
         ],
       },
-      {
-        title: '\u0421\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043c\u0438\u0440\u0430',
-        accent: 'peach',
-        rows: [
-          {
-            rank: 1,
-            name: status.loading
-              ? '\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435'
-              : status.online
-                ? '\u041e\u043d\u043b\u0430\u0439\u043d'
-                : '\u041e\u0444\u0444\u043b\u0430\u0439\u043d',
-            meta: '\u0441\u0442\u0430\u0442\u0443\u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u0430',
-          },
-          {
-            rank: 2,
-            name: formatUpdatedAt(status.updatedAt ?? new Date()),
-            meta: '\u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435',
-          },
-          {
-            rank: 3,
-            name: status.error ? '\u0415\u0441\u0442\u044c \u043e\u0448\u0438\u0431\u043a\u0430' : '\u0411\u0435\u0437 \u043e\u0448\u0438\u0431\u043e\u043a',
-            meta: '\u043e\u0442\u0432\u0435\u0442 API',
-          },
-        ],
-      },
     ]
   }, [status])
+
+  const selectedPlayerDetails = useMemo(() => {
+    if (!selectedPlayer) {
+      return []
+    }
+
+    return getPlayerDetails(selectedPlayer, status)
+  }, [selectedPlayer, status])
 
   return (
     <section id="players" className="section players-section">
       <div className="container players-screen">
         <div className="players-summary-pill">
-          <strong>
+          <span className="players-summary-text">
             {status.loading
               ? '\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u043e\u043d\u043b\u0430\u0439\u043d\u0430'
               : `${status.playersOnline} \u0438\u0433\u0440\u043e\u043a\u043e\u0432 \u043e\u043d\u043b\u0430\u0439\u043d`}
-          </strong>
-          <span>
+          </span>
+          <span className="players-summary-divider">{'\u2022'}</span>
+          <span className="players-summary-text">
             {`\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u043e ${formatUpdatedAt(status.updatedAt ?? new Date())}`}
           </span>
         </div>
@@ -245,7 +252,7 @@ export default function Players() {
         <div className="players-card-grid">
           {filteredPlayers.length ? (
             filteredPlayers.map((playerName) => (
-              <article key={playerName} className="players-card">
+              <button key={playerName} type="button" className="players-card" onClick={() => setSelectedPlayer(playerName)}>
                 <div className="players-card-avatar-wrap">
                   <img
                     src={`https://mc-heads.net/avatar/${encodeURIComponent(playerName)}/96`}
@@ -256,14 +263,7 @@ export default function Players() {
                   <span className="players-card-online-dot" aria-hidden="true"></span>
                 </div>
                 <strong className="players-card-name">{playerName}</strong>
-                <div className="players-card-hearts" aria-label={`${getHearts(playerName)} hearts`}>
-                  {Array.from({ length: 3 }, (_, index) => (
-                    <span key={`${playerName}-heart-${index}`} className={index < getHearts(playerName) ? 'is-filled' : ''}>
-                      {'\u2665'}
-                    </span>
-                  ))}
-                </div>
-              </article>
+              </button>
             ))
           ) : (
             <div className="players-empty-state">
@@ -273,6 +273,56 @@ export default function Players() {
             </div>
           )}
         </div>
+
+        {selectedPlayer ? (
+          <div className="players-modal" role="dialog" aria-modal="true" aria-label={selectedPlayer} onClick={() => setSelectedPlayer(null)}>
+            <div className="players-modal-card" onClick={(event) => event.stopPropagation()}>
+              <button
+                type="button"
+                className="players-modal-close"
+                onClick={() => setSelectedPlayer(null)}
+                aria-label={'\u0417\u0430\u043a\u0440\u044b\u0442\u044c'}
+              >
+                {'\u00d7'}
+              </button>
+
+              <div className="players-modal-header">
+                <img
+                  src={`https://mc-heads.net/avatar/${encodeURIComponent(selectedPlayer)}/64`}
+                  alt={selectedPlayer}
+                  className="players-modal-head"
+                />
+                <div className="players-modal-title">
+                  <h3>{selectedPlayer}</h3>
+                  <p>{'\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u0433\u0440\u043e\u043a\u0430 \u043d\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0435 Ember Saga'}</p>
+                </div>
+              </div>
+
+              <div className="players-modal-layout">
+                <div className="players-modal-skin-wrap">
+                  <img
+                    src={`https://mc-heads.net/body/${encodeURIComponent(selectedPlayer)}/right`}
+                    alt={selectedPlayer}
+                    className="players-modal-skin"
+                  />
+                  <div className="players-modal-status">
+                    <span className="players-modal-status-dot" aria-hidden="true"></span>
+                    <span>{status.online ? '\u041e\u043d\u043b\u0430\u0439\u043d' : '\u041d\u0435 \u0432 \u0441\u0435\u0442\u0438'}</span>
+                  </div>
+                </div>
+
+                <div className="players-modal-stats">
+                  {selectedPlayerDetails.map((item) => (
+                    <div key={`${selectedPlayer}-${item.label}`} className="players-modal-stat">
+                      <span>{item.label}</span>
+                      <strong>{item.value}</strong>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   )

@@ -4322,12 +4322,16 @@ body {
     linear-gradient(135deg, rgba(42, 24, 68, 0.88), rgba(17, 48, 36, 0.72));
   box-shadow: 0 18px 48px rgba(13, 8, 24, 0.3);
   color: #f4f6fb;
+  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
 }
 
-.players-summary-pill strong {
-  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
+.players-summary-text {
   font-size: 0.94rem;
   letter-spacing: 0.03em;
+}
+
+.players-summary-divider {
+  color: #8b5cf6;
 }
 
 .players-summary-pill span {
@@ -4387,7 +4391,7 @@ body {
 
 .players-stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -4467,21 +4471,33 @@ body {
 }
 
 .players-card {
+  appearance: none;
+  border: 1px solid rgba(139, 92, 246, 0.3);
   display: grid;
   justify-items: center;
   gap: 12px;
   padding: 18px 16px 16px;
-  border: 1px solid rgba(139, 92, 246, 0.3);
   border-radius: 22px;
   background:
     linear-gradient(180deg, rgba(16, 20, 32, 0.78), rgba(10, 13, 22, 0.88));
   box-shadow: 0 18px 48px rgba(7, 10, 18, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    background 0.22s ease;
 }
 
-.players-card:hover {
-  transform: translateY(-3px);
+.players-card:hover,
+.players-card:focus-visible {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(50, 213, 131, 0.44);
   box-shadow: 0 24px 56px rgba(70, 34, 128, 0.34);
+}
+
+.players-card:active {
+  transform: translateY(-1px) scale(0.985);
 }
 
 .players-card-avatar-wrap {
@@ -4515,17 +4531,6 @@ body {
   word-break: break-word;
 }
 
-.players-card-hearts {
-  display: inline-flex;
-  gap: 4px;
-  color: #5f6684;
-  font-size: 0.96rem;
-}
-
-.players-card-hearts .is-filled {
-  color: #ff4d6d;
-}
-
 .players-empty-state {
   padding: 24px;
   border: 1px dashed rgba(139, 92, 246, 0.4);
@@ -4533,6 +4538,148 @@ body {
   background: rgba(15, 18, 29, 0.72);
   color: #bfc8ea;
   text-align: center;
+}
+
+.players-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(4, 6, 12, 0.82);
+  backdrop-filter: blur(6px);
+}
+
+.players-modal-card {
+  position: relative;
+  width: min(1080px, 100%);
+  max-height: min(90vh, 920px);
+  overflow: auto;
+  border: 1px solid rgba(139, 92, 246, 0.34);
+  border-radius: 28px;
+  padding: 28px;
+  background:
+    linear-gradient(180deg, rgba(12, 15, 25, 0.98), rgba(9, 11, 18, 0.99));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+  animation: playersModalEnter 0.22s ease;
+}
+
+.players-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(139, 92, 246, 0.42);
+  border-radius: 999px;
+  background: transparent;
+  color: #f4f6fb;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.players-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.players-modal-head {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 2px solid rgba(50, 213, 131, 0.56);
+  image-rendering: pixelated;
+}
+
+.players-modal-title h3 {
+  margin: 0;
+  color: #c28cff;
+  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.players-modal-title p {
+  margin: 8px 0 0;
+  color: #9ea8c7;
+}
+
+.players-modal-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(320px, 1.1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.players-modal-skin-wrap {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+}
+
+.players-modal-skin {
+  width: min(100%, 340px);
+  image-rendering: pixelated;
+  filter: drop-shadow(0 20px 42px rgba(0, 0, 0, 0.36));
+}
+
+.players-modal-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #32d583;
+  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
+}
+
+.players-modal-status-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #32d583;
+  box-shadow: 0 0 16px rgba(50, 213, 131, 0.5);
+}
+
+.players-modal-stats {
+  display: grid;
+  gap: 16px;
+}
+
+.players-modal-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 76px;
+  padding: 0.95rem 1.2rem;
+  border: 1px solid rgba(139, 92, 246, 0.34);
+  border-radius: 18px;
+  background: rgba(17, 20, 31, 0.82);
+}
+
+.players-modal-stat span {
+  color: #9ea8c7;
+  font-size: 1rem;
+}
+
+.players-modal-stat strong {
+  color: #32d583;
+  font-family: 'Minecraft', 'Trebuchet MS', sans-serif;
+  text-align: right;
+}
+
+@keyframes playersModalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @media (max-width: 1100px) {
@@ -4543,6 +4690,10 @@ body {
 
 @media (max-width: 900px) {
   .players-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .players-modal-layout {
     grid-template-columns: 1fr;
   }
 }
@@ -4559,6 +4710,14 @@ body {
 
   .players-card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .players-modal {
+    padding: 14px;
+  }
+
+  .players-modal-card {
+    padding: 20px 18px;
   }
 }
 
