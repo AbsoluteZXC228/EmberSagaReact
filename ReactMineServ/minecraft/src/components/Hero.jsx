@@ -81,7 +81,7 @@ export default function Hero({ onJoinClick }) {
         <h1>
           <span className="brand-ember">EMBER</span> <span className="brand-saga">SAGA</span>
         </h1>
-        <p className="hero-subline">Свобода. Политика. Войны.</p>
+        <p className="hero-subline">Свобода. Союзы. Сражения.</p>
         <p className="hero-text hero-text-centered">
           Мир, где государства строятся игроками, конфликты имеют последствия, а история сервера рождается прямо в игре.
         </p>
