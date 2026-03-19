@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Start from '../components/Start'
@@ -12,16 +12,11 @@ import FooterShowcase from '../components/FooterShowcase'
 import { getHeaderOffset, getSectionTargetTop, scrollToSection } from '../utils/scroll'
 
 export default function Home() {
-  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false)
-
-  const openJoinModal = () => window.open('https://t.me/EmberSaga_bot', '_blank', 'noopener,noreferrer')
-  const closeJoinModal = () => setIsJoinModalOpen(false)
+  const isJoinModalOpen = false
+  const openJoinModal = () => scrollToSection(document.querySelector('#start'))
+  const closeJoinModal = () => {}
 
   useEffect(() => {
-    if (isJoinModalOpen) {
-      return undefined
-    }
-
     const sectionSelectors = ['#top', '#about', '#history', '#rules', '#map', '#players', '#start', '#gallery', '#contact']
     const desktopBreakpoint = 980
     const wheelThreshold = 70
@@ -107,7 +102,7 @@ export default function Home() {
       window.removeEventListener('wheel', handleWheel)
       window.clearTimeout(lockTimer)
     }
-  }, [isJoinModalOpen])
+  }, [])
 
   return (
     <div className="minecraft-app">
