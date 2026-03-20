@@ -78,11 +78,6 @@ export default function Start() {
           ))}
         </div>
 
-        <div className="start-actions">
-          <button type="button" className="btn start-cta-btn" onClick={handleCopyIp}>
-            {copyState === 'copied' ? '\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e!' : '\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c IP \u0438 \u0437\u0430\u0439\u0442\u0438'}
-          </button>
-        </div>
       </div>
     </section>
   )

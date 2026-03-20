@@ -60,7 +60,7 @@ export default function Header({ onJoinClick }) {
               onJoinClick?.()
             }}
           >
-            Подать заявку
+            {'\u0418\u0433\u0440\u0430\u0442\u044c'}
           </button>
         </nav>
       </div>

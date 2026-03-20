@@ -88,7 +88,7 @@ export default function Hero({ onJoinClick }) {
 
         <div className="hero-actions hero-actions-centered">
           <button type="button" className="btn hero-btn-primary" onClick={onJoinClick}>
-            Подать заявку
+            {'\u0418\u0433\u0440\u0430\u0442\u044c'}
           </button>
           <a href="#map" className="btn hero-btn-secondary" onClick={handleAnchorClick('#map')}>
             Смотреть карту
