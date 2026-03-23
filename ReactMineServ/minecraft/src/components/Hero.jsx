@@ -101,7 +101,7 @@ export default function Hero({ onJoinClick }) {
           <span>Честный старт</span>
         </div>
 
-        <a href="#about" className="hero-scroll-indicator" aria-label="Прокрутить вниз" onClick={handleAnchorClick('#about')}>
+        <a href="#history" className="hero-scroll-indicator" aria-label="\u041f\u0440\u043e\u043a\u0440\u0443\u0442\u0438\u0442\u044c \u0432\u043d\u0438\u0437" onClick={handleAnchorClick('#history')}>
           ↓
         </a>
       </div>
