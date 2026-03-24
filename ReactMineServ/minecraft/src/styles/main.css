@@ -123,18 +123,6 @@ a {
   box-shadow: none;
 }
 
-.header-icon-nav-shell::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  width: 96px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(139, 92, 246, 0), rgba(139, 92, 246, 0.82), rgba(50, 213, 131, 0.68), rgba(139, 92, 246, 0));
-  opacity: 0.9;
-  transform: translateX(-50%);
-}
-
 .header-icon-item {
   position: relative;
   flex: 1 1 0;
@@ -220,10 +208,33 @@ a {
   pointer-events: none;
 }
 
+.header-icon-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.95), rgba(50, 213, 131, 0.95));
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: width 0.25s ease, opacity 0.25s ease;
+}
+
 .header-icon-item:hover .header-icon-label,
 .header-icon-item:focus-visible .header-icon-label {
   opacity: 1;
   transform: translateX(-50%) translateY(2px);
+}
+
+.header-icon-item-active .header-icon-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(2px);
+}
+
+.header-icon-item-active .header-icon-indicator {
+  width: 28px;
+  opacity: 1;
 }
 
 .tone-ember {

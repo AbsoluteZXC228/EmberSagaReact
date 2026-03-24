@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import serverLogo from '../Logo/logo.jpg'
-import { scrollToSelector } from '../utils/scroll'
+import { getHeaderOffset, scrollToSelector } from '../utils/scroll'
 
 const iconNavItems = [
   { href: '#history', label: 'История', icon: 'icon-book', tone: 'ember' },
@@ -69,11 +69,51 @@ function HeaderIconSprite() {
 
 export default function Header({ onJoinClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeHref, setActiveHref] = useState(iconNavItems[0].href)
+
+  useEffect(() => {
+    const updateActiveItem = () => {
+      const headerOffset = getHeaderOffset()
+      const viewportAnchor = headerOffset + (window.innerHeight - headerOffset) * 0.35
+
+      let closestHref = iconNavItems[0].href
+      let closestDistance = Number.POSITIVE_INFINITY
+
+      iconNavItems.forEach((item) => {
+        const section = document.querySelector(item.href)
+
+        if (!section) {
+          return
+        }
+
+        const rect = section.getBoundingClientRect()
+        const sectionAnchor = rect.top + Math.min(rect.height * 0.35, 220)
+        const distance = Math.abs(sectionAnchor - viewportAnchor)
+
+        if (distance < closestDistance) {
+          closestDistance = distance
+          closestHref = item.href
+        }
+      })
+
+      setActiveHref(closestHref)
+    }
+
+    updateActiveItem()
+    window.addEventListener('scroll', updateActiveItem, { passive: true })
+    window.addEventListener('resize', updateActiveItem)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveItem)
+      window.removeEventListener('resize', updateActiveItem)
+    }
+  }, [])
 
   const closeMenu = () => setIsMenuOpen(false)
   const handleAnchorClick = (href) => (event) => {
     closeMenu()
     event.preventDefault()
+    setActiveHref(href)
     scrollToSelector(href)
   }
 
@@ -93,7 +133,7 @@ export default function Header({ onJoinClick }) {
               <a
                 key={item.href}
                 href={item.href}
-                className={`header-icon-item tone-${item.tone}`}
+                className={`header-icon-item tone-${item.tone} ${activeHref === item.href ? 'header-icon-item-active' : ''}`}
                 aria-label={item.label}
                 title={item.label}
                 onClick={handleAnchorClick(item.href)}
@@ -104,6 +144,7 @@ export default function Header({ onJoinClick }) {
                   </svg>
                 </span>
                 <span className="header-icon-label">{item.label}</span>
+                <span className="header-icon-indicator" aria-hidden="true"></span>
               </a>
             ))}
           </div>
