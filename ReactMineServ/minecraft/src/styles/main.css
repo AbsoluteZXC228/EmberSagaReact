@@ -112,15 +112,15 @@ a {
 
 .header-icon-nav-shell {
   position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 2px;
+  justify-content: space-between;
+  gap: 6px;
+  width: min(560px, 100%);
   padding: 8px 16px 14px;
-  border: 1px solid rgba(162, 134, 255, 0.2);
-  border-top: 0;
   border-radius: 0 0 24px 24px;
-  background: linear-gradient(180deg, rgba(36, 23, 59, 0.96), rgba(23, 18, 39, 0.94));
-  box-shadow: 0 16px 34px rgba(5, 6, 16, 0.28);
+  background: transparent;
+  box-shadow: none;
 }
 
 .header-icon-nav-shell::after {
@@ -137,7 +137,9 @@ a {
 
 .header-icon-item {
   position: relative;
-  width: 58px;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
   height: 58px;
   display: inline-flex;
   align-items: center;
@@ -165,7 +167,7 @@ a {
 .header-icon-item:hover::after,
 .header-icon-item:focus-visible::before,
 .header-icon-item:focus-visible::after {
-  transform: translateY(-24px) scale(0.96);
+  transform: translateY(-18px) scale(0.72);
 }
 
 .header-icon-item:hover::before,
@@ -190,7 +192,7 @@ a {
 
 .header-icon-item:hover .header-icon-circle,
 .header-icon-item:focus-visible .header-icon-circle {
-  transform: translateY(-23px) scale(1.14);
+  transform: translateY(-17px) scale(1.08);
   color: #fff;
 }
 
