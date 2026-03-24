@@ -155,7 +155,7 @@ a {
 .header-icon-item:hover::after,
 .header-icon-item:focus-visible::before,
 .header-icon-item:focus-visible::after {
-  transform: translateY(-18px) scale(0.72);
+  transform: translateY(-4px) scale(0.58);
 }
 
 .header-icon-item:hover::before,
@@ -180,8 +180,14 @@ a {
 
 .header-icon-item:hover .header-icon-circle,
 .header-icon-item:focus-visible .header-icon-circle {
-  transform: translateY(-17px) scale(1.08);
+  transform: translateY(-3px) scale(1.04);
   color: #fff;
+}
+
+.header-icon-item:hover .header-nav-icon,
+.header-icon-item:focus-visible .header-nav-icon,
+.header-icon-item-active .header-nav-icon {
+  filter: drop-shadow(0 0 8px currentColor);
 }
 
 .header-nav-icon {
