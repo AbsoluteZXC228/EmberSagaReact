@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import serverLogo from '../Logo/logo.jpg'
-import { getHeaderOffset, scrollToSelector } from '../utils/scroll'
+import { getHeaderOffset, getSectionTargetTop, scrollToSelector } from '../utils/scroll'
 
 const iconNavItems = [
   { href: '#history', label: 'История', icon: 'icon-book', tone: 'ember' },
@@ -69,30 +69,43 @@ function HeaderIconSprite() {
 
 export default function Header({ onJoinClick }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeHref, setActiveHref] = useState(iconNavItems[0].href)
+  const [activeHref, setActiveHref] = useState(null)
 
   useEffect(() => {
     const updateActiveItem = () => {
+      const sections = iconNavItems
+        .map((item) => ({
+          href: item.href,
+          section: document.querySelector(item.href),
+        }))
+        .filter((item) => item.section)
+
+      if (!sections.length) {
+        setActiveHref(null)
+        return
+      }
+
+      const firstSectionTop = getSectionTargetTop(sections[0].section)
+
+      if (window.scrollY < Math.max(firstSectionTop - 80, 0)) {
+        setActiveHref(null)
+        return
+      }
+
       const headerOffset = getHeaderOffset()
       const viewportAnchor = headerOffset + (window.innerHeight - headerOffset) * 0.35
 
-      let closestHref = iconNavItems[0].href
+      let closestHref = sections[0].href
       let closestDistance = Number.POSITIVE_INFINITY
 
-      iconNavItems.forEach((item) => {
-        const section = document.querySelector(item.href)
-
-        if (!section) {
-          return
-        }
-
+      sections.forEach(({ href, section }) => {
         const rect = section.getBoundingClientRect()
         const sectionAnchor = rect.top + Math.min(rect.height * 0.35, 220)
         const distance = Math.abs(sectionAnchor - viewportAnchor)
 
         if (distance < closestDistance) {
           closestDistance = distance
-          closestHref = item.href
+          closestHref = href
         }
       })
 
