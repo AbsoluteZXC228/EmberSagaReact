@@ -96,7 +96,6 @@ export default function Hero({ onJoinClick }) {
         </div>
 
         <div className="hero-promo-line" aria-label="Особенности сервера">
-          <span>Whitelist</span>
           <span>Политика и лор</span>
           <span>Честный старт</span>
         </div>
