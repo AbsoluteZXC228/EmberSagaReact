@@ -116,7 +116,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 6px;
-  width: min(560px, 100%);
+  width: min(660px, 100%);
   padding: 8px 16px 14px;
   border-radius: 0 0 24px 24px;
   background: transparent;
@@ -197,6 +197,23 @@ a {
   stroke: currentColor;
   stroke-width: 1.2;
   vector-effect: non-scaling-stroke;
+}
+
+.header-nav-image-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(75%) sepia(45%) saturate(1436%) hue-rotate(219deg) brightness(104%) contrast(101%);
+  transition: filter 0.25s ease;
+}
+
+.header-icon-item:hover .header-nav-image-icon,
+.header-icon-item:focus-visible .header-nav-image-icon,
+.header-icon-item-active .header-nav-image-icon {
+  filter:
+    brightness(0) saturate(100%) invert(86%) sepia(10%) saturate(3057%) hue-rotate(214deg) brightness(103%) contrast(103%)
+    drop-shadow(0 0 8px rgba(184, 140, 255, 0.5));
 }
 
 .header-icon-label {

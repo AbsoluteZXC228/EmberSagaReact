@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import serverLogo from '../Logo/logo.jpg'
+import gameIcon from '../Logo/game.svg'
 import { getHeaderOffset, getSectionTargetTop, scrollToSelector } from '../utils/scroll'
 
 const iconNavItems = [
@@ -7,13 +8,13 @@ const iconNavItems = [
   { href: '#rules', label: 'Правила', icon: 'icon-shield', tone: 'violet' },
   { href: '#map', label: 'Карта', icon: 'icon-map', tone: 'sky' },
   { href: '#players', label: 'Игроки', icon: 'icon-players', tone: 'green' },
+  { href: '#start', label: 'Начать', image: gameIcon, tone: 'violet' },
   { href: '#gallery', label: 'Галерея', icon: 'icon-gallery', tone: 'gold' },
 ]
 
 const mobileNavItems = [
   { href: '#top', label: 'Главная' },
   ...iconNavItems,
-  { href: '#start', label: 'Начать' },
 ]
 
 function HeaderIconSprite() {
@@ -152,9 +153,13 @@ export default function Header({ onJoinClick }) {
                 onClick={handleAnchorClick(item.href)}
               >
                 <span className="header-icon-circle">
-                  <svg className="header-nav-icon" viewBox="0 0 32 32" aria-hidden="true">
-                    <use href={`#${item.icon}`} />
-                  </svg>
+                  {item.image ? (
+                    <img src={item.image} alt="" className="header-nav-image-icon" aria-hidden="true" />
+                  ) : (
+                    <svg className="header-nav-icon" viewBox="0 0 32 32" aria-hidden="true">
+                      <use href={`#${item.icon}`} />
+                    </svg>
+                  )}
                 </span>
                 <span className="header-icon-label">{item.label}</span>
                 <span className="header-icon-indicator" aria-hidden="true"></span>
