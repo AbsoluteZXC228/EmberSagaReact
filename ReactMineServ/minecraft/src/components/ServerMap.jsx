@@ -6,6 +6,8 @@ const mapHighlights = [
   'Игроки онлайн',
 ]
 
+const dynmapUrl = '/map/'
+
 export default function ServerMap() {
   return (
     <section id="map" className="section section-alt map-section" style={{ '--map-bg': `url(${mapBackdrop})` }}>
@@ -16,14 +18,14 @@ export default function ServerMap() {
               <p className="eyebrow">Онлайн-навигация</p>
               <h2>Карта сервера</h2>
               <p className="rules-note">
-                Живая карта мира: города, маршруты, ключевые территории и активность игроков в реальном времени.
+                Живая карта мира с городами, дорогами, территориями и активностью игроков в реальном времени.
               </p>
             </div>
 
             <div className="map-meta-panel panel">
               <div className="map-meta-copy">
                 <strong>Что видно на карте</strong>
-                <p>Следи за государствами, дорогами, столицами и передвижением игроков без входа в сам мир.</p>
+                <p>Следи за государствами, дорогами, столицами и перемещением игроков без входа в сам мир.</p>
               </div>
 
               <div className="map-highlight-row" aria-label="Что можно отслеживать">
@@ -34,18 +36,27 @@ export default function ServerMap() {
 
               <div className="map-actions">
                 <a
-                  href="http://213.171.18.207:32826/#"
+                  href={dynmapUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="btn map-open-btn"
                 >
                   Открыть карту
                 </a>
-                <span className="map-note">Лучше всего работает на десктопе в отдельной вкладке.</span>
+                <span className="map-note">Если встраивание не сработает, открой карту в отдельной вкладке.</span>
               </div>
             </div>
           </div>
 
+          <div className="map-wrap panel">
+            <iframe
+              title="EmberSaga Dynmap"
+              src={dynmapUrl}
+              className="server-map-frame"
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
         </div>
       </div>
     </section>
